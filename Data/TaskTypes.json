@@ -1,0 +1,125 @@
+{
+  "tasks-dir": "tasks",
+  "stash-dir": "stash",
+  "tag-distribution": {
+    "daily-priorities": {
+      "#HLT": {
+        "description": "Health-related tasks: exercise, nutrition, mental activities",
+        "weekly-amount-days": [7],
+        "daily-amount": [1, 2],
+        "pick-up-priority": 3.0,
+        "sorting-index": 0,
+        "color": "#ff0000"
+      },
+      "#LNG": {
+        "description": "Language-related tasks: learning grammar, building vocabulary, repetition, practice",
+        "weekly-amount-days": [7],
+        "daily-amount": [1, 2],
+        "pick-up-priority": 1.0,
+        "sorting-index": 1,
+        "color": "#ff9900"
+      },
+      "#PRJ": {
+        "description": "Project involvement. The time you dedicate to certain projects.",
+        "weekly-amount-days": [7],
+        "daily-amount": [1],
+        "pick-up-priority": 1.0,
+        "sorting-index": 2,
+        "color": "#9fc5e8"
+      },
+      "#ART": {
+        "description": "Art-related tasks: drawing, modeling, music.",
+        "weekly-amount-days": [2, 4],
+        "daily-amount": [1],
+        "pick-up-priority": 0.7,
+        "sorting-index": 3,
+        "color": "#9900ff"
+      },
+      "#DEV": {
+        "description": "Development-related tasks: studying technology, investigating codebases, reading tech books",
+        "weekly-amount-days": [2, 4],
+        "daily-amount": [1],
+        "pick-up-priority": 0.6,
+        "sorting-index": 4,
+        "color": "#1155cc"
+      },
+      "#EDU": {
+        "description": "Education-related tasks: studying various disciplines, reading books",
+        "weekly-amount-days": [7],
+        "daily-amount": [1],
+        "pick-up-priority": 0.6,
+        "sorting-index": 5,
+        "color": "#6aa84f"
+      },
+      "#SKL": {
+        "description": "Skill-development tasks: operating drones, playing musical instruments, following tutorials",
+        "weekly-amount-days": [7],
+        "daily-amount": [1],
+        "pick-up-priority": 0.8,
+        "sorting-index": 6,
+        "color": "#bf9000"
+      },
+      "#ENT": {
+        "description": "Playing games, watching movies, rest",
+        "weekly-amount-days": [2, 3],
+        "daily-amount": [1, 2],
+        "pick-up-priority": 0.6,
+        "sorting-index": 7,
+        "color": "#ffff00"
+      },
+      "#TODO": {
+        "description": "Generic task planning",
+        "weekly-amount-days": [0, 2],
+        "daily-amount": [1],
+        "pick-up-priority": 0.3,
+        "sorting-index": 8,
+        "color": "#ffffff"
+      }
+    }
+  },
+  "permanent-tasks": {
+	  "1": [
+		"workout,App,new,$DATE,HLT,,",
+		"drone-practice,Real life or simulator,new,$DATE,SKL,,",
+		"language-swedish,Duo lingo or anki,new,$DATE,LNG,,",
+		"geography-europe,anki cards,new,$DATE,EDU,,"
+	  ],
+	  "2": [
+		"workout,App,new,$DATE,HLT,,",
+		"drone-practice,Real life or simulator,new,$DATE,SKL,,",
+		"language-swedish,Duo lingo or anki,new,$DATE,LNG,,",
+		"geography-europe,anki cards,new,$DATE,EDU,,"
+	  ],
+	  "3": [
+		"workout,App,new,$DATE,HLT,,",
+		"drone-practice,Real life or simulator,new,$DATE,SKL,,",
+		"language-swedish,Duo lingo or anki,new,$DATE,LNG,,",
+		"geography-europe,anki cards,new,$DATE,EDU,,"
+	  ],
+	  "4": [
+		"workout,App,new,$DATE,HLT,,",
+		"drone-practice,Real life or simulator,new,$DATE,SKL,,",
+		"language-swedish,Duo lingo or anki,new,$DATE,LNG,,",
+		"geography-europe,anki cards,new,$DATE,EDU,,"
+	  ],
+	  "5": [
+  		"workout,App,new,$DATE,HLT,,",
+		"drone-practice,Real life or simulator,new,$DATE,SKL,,",
+		"language-swedish,Duo lingo or anki,new,$DATE,LNG,,",
+		"geography-europe,anki cards,new,$DATE,EDU,,"
+	  ],
+	  "6": [
+	  	"workout,App,new,$DATE,HLT,,",
+		"drone-practice,Real life or simulator,new,$DATE,SKL,,",
+		"language-swedish,Duo lingo or anki,new,$DATE,LNG,,",
+		"geography-europe,anki cards,new,$DATE,EDU,,"
+	  ],
+	  "7": [
+	  	"workout,App,new,$DATE,HLT,,",
+		"drone-practice,Real life or simulator,new,$DATE,SKL,,",
+		"language-swedish,Duo lingo or anki,new,$DATE,LNG,,",
+		"geography-europe,anki cards,new,$DATE,EDU,,",
+		"organize-week,\"Move to done, summarize, generate next week, prepare medicine\",new,$DATE,TODO,,"
+	  ]
+  }
+}
