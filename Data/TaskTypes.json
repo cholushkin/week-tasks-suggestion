@@ -1,125 +1,74 @@
 {
-  "tasks-dir": "tasks",
-  "stash-dir": "stash",
-  "tag-distribution": {
-    "daily-priorities": {
-      "#HLT": {
-        "description": "Health-related tasks: exercise, nutrition, mental activities",
+    "HLT": {
+        "description": "Tasks focused on health and well-being, including daily exercise routines, balanced nutrition planning, and mental wellness practices.",
         "weekly-amount-days": [7],
         "daily-amount": [1, 2],
         "pick-up-priority": 3.0,
         "sorting-index": 0,
         "color": "#ff0000"
-      },
-      "#LNG": {
-        "description": "Language-related tasks: learning grammar, building vocabulary, repetition, practice",
+    },
+    "LNG": {
+        "description": "Language-learning activities aimed at mastering grammar, expanding vocabulary, practicing conversation, and daily language exercises.",
         "weekly-amount-days": [7],
         "daily-amount": [1, 2],
         "pick-up-priority": 1.0,
         "sorting-index": 1,
         "color": "#ff9900"
-      },
-      "#PRJ": {
-        "description": "Project involvement. The time you dedicate to certain projects.",
+    },
+    "PRJ": {
+        "description": "Project-related work, involving time dedicated to ongoing projects, development tasks, and completing project milestones.",
         "weekly-amount-days": [7],
         "daily-amount": [1],
         "pick-up-priority": 1.0,
         "sorting-index": 2,
         "color": "#9fc5e8"
-      },
-      "#ART": {
-        "description": "Art-related tasks: drawing, modeling, music.",
+    },
+    "ART": {
+        "description": "Creative and artistic tasks, such as drawing, sculpting, making music, or engaging in other artistic disciplines.",
         "weekly-amount-days": [2, 4],
         "daily-amount": [1],
         "pick-up-priority": 0.7,
         "sorting-index": 3,
         "color": "#9900ff"
-      },
-      "#DEV": {
-        "description": "Development-related tasks: studying technology, investigating codebases, reading tech books",
+    },
+    "DEV": {
+        "description": "Development-focused tasks, including coding practice, learning new technologies, and exploring software engineering concepts.",
         "weekly-amount-days": [2, 4],
         "daily-amount": [1],
         "pick-up-priority": 0.6,
         "sorting-index": 4,
         "color": "#1155cc"
-      },
-      "#EDU": {
-        "description": "Education-related tasks: studying various disciplines, reading books",
+    },
+    "EDU": {
+        "description": "Educational tasks, covering study in diverse subjects, reading academic material, and self-directed learning.",
         "weekly-amount-days": [7],
         "daily-amount": [1],
         "pick-up-priority": 0.6,
         "sorting-index": 5,
         "color": "#6aa84f"
-      },
-      "#SKL": {
-        "description": "Skill-development tasks: operating drones, playing musical instruments, following tutorials",
+    },
+    "SKL": {
+        "description": "Skill-building activities, such as learning new practical skills, training with instruments, or practicing through hands-on tutorials.",
         "weekly-amount-days": [7],
         "daily-amount": [1],
         "pick-up-priority": 0.8,
         "sorting-index": 6,
         "color": "#bf9000"
-      },
-      "#ENT": {
-        "description": "Playing games, watching movies, rest",
+    },
+    "ENT": {
+        "description": "Entertainment and leisure activities, like playing games, watching movies, or engaging in relaxation and rest.",
         "weekly-amount-days": [2, 3],
         "daily-amount": [1, 2],
         "pick-up-priority": 0.6,
         "sorting-index": 7,
         "color": "#ffff00"
-      },
-      "#TODO": {
-        "description": "Generic task planning",
+    },
+    "TODO": {
+        "description": "General task planning and organization activities, setting goals, reviewing plans, and scheduling upcoming tasks.",
         "weekly-amount-days": [0, 2],
         "daily-amount": [1],
         "pick-up-priority": 0.3,
         "sorting-index": 8,
         "color": "#ffffff"
-      }
     }
-  },
-  "permanent-tasks": {
-	  "1": [
-		"workout,App,new,$DATE,HLT,,",
-		"drone-practice,Real life or simulator,new,$DATE,SKL,,",
-		"language-swedish,Duo lingo or anki,new,$DATE,LNG,,",
-		"geography-europe,anki cards,new,$DATE,EDU,,"
-	  ],
-	  "2": [
-		"workout,App,new,$DATE,HLT,,",
-		"drone-practice,Real life or simulator,new,$DATE,SKL,,",
-		"language-swedish,Duo lingo or anki,new,$DATE,LNG,,",
-		"geography-europe,anki cards,new,$DATE,EDU,,"
-	  ],
-	  "3": [
-		"workout,App,new,$DATE,HLT,,",
-		"drone-practice,Real life or simulator,new,$DATE,SKL,,",
-		"language-swedish,Duo lingo or anki,new,$DATE,LNG,,",
-		"geography-europe,anki cards,new,$DATE,EDU,,"
-	  ],
-	  "4": [
-		"workout,App,new,$DATE,HLT,,",
-		"drone-practice,Real life or simulator,new,$DATE,SKL,,",
-		"language-swedish,Duo lingo or anki,new,$DATE,LNG,,",
-		"geography-europe,anki cards,new,$DATE,EDU,,"
-	  ],
-	  "5": [
-  		"workout,App,new,$DATE,HLT,,",
-		"drone-practice,Real life or simulator,new,$DATE,SKL,,",
-		"language-swedish,Duo lingo or anki,new,$DATE,LNG,,",
-		"geography-europe,anki cards,new,$DATE,EDU,,"
-	  ],
-	  "6": [
-	  	"workout,App,new,$DATE,HLT,,",
-		"drone-practice,Real life or simulator,new,$DATE,SKL,,",
-		"language-swedish,Duo lingo or anki,new,$DATE,LNG,,",
-		"geography-europe,anki cards,new,$DATE,EDU,,"
-	  ],
-	  "7": [
-	  	"workout,App,new,$DATE,HLT,,",
-		"drone-practice,Real life or simulator,new,$DATE,SKL,,",
-		"language-swedish,Duo lingo or anki,new,$DATE,LNG,,",
-		"geography-europe,anki cards,new,$DATE,EDU,,",
-		"organize-week,\"Move to done, summarize, generate next week, prepare medicine\",new,$DATE,TODO,,"
-	  ]
-  }
 }

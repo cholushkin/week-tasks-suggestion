@@ -1,39 +1,53 @@
-using System;
-using System.Collections.Generic;
+using System.Text.Json;
 
 namespace WeekTasks
 {
     public class TaskType
     {
         public string Description { get; set; }
-        public int WeeklyAmountDays { get; set; }
-        public int DailyAmount { get; set; }
-        public int PickUpPriority { get; set; }
+        public List<int> WeeklyAmountDays { get; set; }
+        public List<int> DailyAmount { get; set; }
+        public double PickUpPriority { get; set; }
         public int SortingIndex { get; set; }
         public string Color { get; set; }
 
-        // Constructor to initialize all properties
-        public TaskType(string description, int weeklyAmountDays, int dailyAmount, int pickUpPriority, int sortingIndex, string color)
+        // Load all task types from a JSON file
+        public static Dictionary<string, TaskType> LoadFromJson(string filePath)
         {
-            Description = description;
-            WeeklyAmountDays = weeklyAmountDays;
-            DailyAmount = dailyAmount;
-            PickUpPriority = pickUpPriority;
-            SortingIndex = sortingIndex;
-            Color = color;
+            try
+            {
+                // Deserialize directly to Dictionary<string, TaskType>
+                var jsonData = File.ReadAllText(filePath);
+                var taskTypes = JsonSerializer.Deserialize<Dictionary<string, TaskType>>(jsonData);
+                
+                return taskTypes ?? throw new InvalidOperationException();
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine($"Error: The file {filePath} does not exist.");
+                Environment.Exit(1);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading task configuration: {ex.Message}");
+                Environment.Exit(1);
+                return null;
+            }
         }
 
-        // Method to create a TaskType instance from a dictionary
-        public static TaskType FromDictionary(Dictionary<string, object> data)
+        // Serialize a dictionary of task types to JSON and save to a file
+        public static void SaveToJson(string filePath, Dictionary<string, TaskType> taskTypes)
         {
-            return new TaskType(
-                description: data["description"].ToString(),
-                weeklyAmountDays: Convert.ToInt32(data["weekly-amount-days"]),
-                dailyAmount: Convert.ToInt32(data["daily-amount"]),
-                pickUpPriority: Convert.ToInt32(data["pick-up-priority"]),
-                sortingIndex: Convert.ToInt32(data["sorting-index"]),
-                color: data["color"].ToString()
-            );
+            try
+            {
+                var jsonData = JsonSerializer.Serialize(taskTypes, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(filePath, jsonData);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving task configuration: {ex.Message}");
+            }
         }
     }
 }

@@ -3,9 +3,12 @@ using System.Text.Json;
 
 namespace WeekTasks
 {
-    class Program
+    static class WeekTasksProgram
     {
         private const string DefaultSettingsPath = "Data/Settings.json";
+        private static Dictionary<string, string> Settings;
+        private static Dictionary<string, TaskType> TaskTypes;
+        private static List<Tasks.Task> TaskList { get; set; } = [];
 
         static int Main(string[] args)
         {
@@ -18,7 +21,7 @@ namespace WeekTasks
             var settingsOption = new Option<string>(
                 "--settings",
                 description:
-                "Path to the task configuration JSON file. Defaults to 'configuration\\settings.json' if not specified.");
+                $"Path to the task configuration JSON file. Defaults to '{DefaultSettingsPath}' if not specified.");
 
             // Create root command and add options
             var rootCommand = new RootCommand("Week tasks suggestion utility")
@@ -26,37 +29,30 @@ namespace WeekTasks
                 startDateOption,
                 settingsOption
             };
-
+            
             rootCommand.SetHandler((string startDate, string settingsPath) =>
             {
-                // Set default values for options if they are not provided
-                startDate = GetNextMonday();
-                settingsPath = DefaultSettingsPath;
-
-                // Load settings from JSON file
-                var settings = Settings.LoadFromJson(settingsPath);
+                settingsPath ??= DefaultSettingsPath;
+                startDate ??= GetNextMonday();
+                LoadData(settingsPath, startDate);
                 
-                // Extend settings with some dynamic settings
-                settings["start-date"] = startDate;
-                settings["output-file"] = $"{settings["output-dir"]}/{startDate}.md";
-
-                // Display settings if verbose mode is enabled
-                if (settings["log-level"] == "verbose")
-                {
-                    Console.WriteLine(
-                        $"Settings : {JsonSerializer.Serialize(settings, new JsonSerializerOptions { WriteIndented = true })}\n");
-                }
-                
-                // // Load task types configuration
-                // var taskTypes = LoadTaskTypeConfiguration(configuration["task-types-configuration"].ToString());
-                //
-                // if (configuration.ContainsKey("verbose") && configuration["verbose"].ToString().ToLower() == "true")
-                // {
-                //     Console.WriteLine($"Loaded task types from: {configuration["task-types-configuration"]}");
-                // }
+                Settings["start-date"] = startDate;
+                Settings["output-file"] = $"{Settings["output-dir"]}/{startDate}.md";
             }, startDateOption, settingsOption);
 
-            return rootCommand.Invoke(args);
+            var result = rootCommand.Invoke(args);
+            
+            // Display settings if verbose mode is enabled
+            if (Settings["log-level"] == "verbose")
+            {
+                Console.WriteLine(
+                    $"Using these settings : {JsonSerializer.Serialize(Settings, new JsonSerializerOptions { WriteIndented = true })}\n"
+                );
+                Console.WriteLine($"Loaded {TaskTypes.Count} task types from {Settings["task-types"]}");
+                Console.WriteLine($"Loaded {TaskList.Count} tasks from {Settings["tasks-dir"]} directory");
+            }
+
+            return result;
         }
         
         private static void SetDefaultColorScheme()
@@ -73,31 +69,15 @@ namespace WeekTasks
             var nextMonday = today.AddDays(daysUntilNextMonday); 
             return nextMonday.ToString("dd-MMM-yyyy");
         }
-
-
-
-
-        static Dictionary<string, TaskType> LoadTaskTypeConfiguration(string filePath)
+        
+        private static void LoadData(string settingsPath, string startDate)
         {
-            try
-            {
-                var jsonData = File.ReadAllText(filePath);
-                var taskData = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, object>>>(jsonData);
+            Settings = WeekTasks.Settings.LoadFromJson(settingsPath);
 
-                var taskTypes = new Dictionary<string, TaskType>();
-                foreach (var (tag, details) in taskData)
-                {
-                    taskTypes[tag] = TaskType.FromDictionary(details);
-                }
+            if (Settings.TryGetValue("task-types", out string taskTypesPath))
+                TaskTypes = TaskType.LoadFromJson(taskTypesPath);
 
-                return taskTypes;
-            }
-            catch (FileNotFoundException)
-            {
-                Console.WriteLine($"Error: The file {filePath} does not exist.");
-                Environment.Exit(1);
-                return null;
-            }
+            TaskList = Tasks.LoadFromDirectory(Settings["tasks-dir"]);
         }
     }
 }
