@@ -6,9 +6,11 @@ namespace WeekTasks
     static class WeekTasksProgram
     {
         private const string DefaultSettingsPath = "Data/Settings.json";
+        
         private static Dictionary<string, string> Settings;
         private static Dictionary<string, TaskType> TaskTypes;
         private static List<Tasks.Task> TaskList { get; set; } = [];
+        private static MessageOfTheDay MessageOfTheDay;
 
         static int Main(string[] args)
         {
@@ -48,9 +50,12 @@ namespace WeekTasks
                 Console.WriteLine(
                     $"Using these settings : {JsonSerializer.Serialize(Settings, new JsonSerializerOptions { WriteIndented = true })}\n"
                 );
-                Console.WriteLine($"Loaded {TaskTypes.Count} task types from {Settings["task-types"]}");
-                Console.WriteLine($"Loaded {TaskList.Count} tasks from {Settings["tasks-dir"]} directory");
+                Console.WriteLine($"Loaded {TaskTypes.Count} task types from {Settings["task-types"]}\n");
+                Console.WriteLine($"Loaded {TaskList.Count} tasks from {Settings["tasks-dir"]} directory\n");
+                Console.WriteLine($"Loaded {MessageOfTheDay.MessageOfTheDayStrings.Count} messages of the day from {Settings["motd"]}\n");
             }
+
+            new SuggestionAlgorithm().Generate(Settings, TaskTypes, TaskList);
 
             return result;
         }
@@ -78,6 +83,7 @@ namespace WeekTasks
                 TaskTypes = TaskType.LoadFromJson(taskTypesPath);
 
             TaskList = Tasks.LoadFromDirectory(Settings["tasks-dir"]);
+            MessageOfTheDay = MessageOfTheDay.LoadFromTextFile(Settings["motd"]);
         }
     }
 }

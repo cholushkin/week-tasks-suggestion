@@ -1,5 +1,5 @@
-tag;task;description;pickup-priority;days;prefs;remarks;prompt
+task-type;task-id;task-description;pickup-priority;days;prefs;remarks;prompt
 LNG;language-english;-;0.45;7;-;-;-
-LNG;language-swedish;-;FOCUS;7;-;-;-
+LNG;language-swedish;-;0.5;7;FOCUS;-;-
 LNG;language-swedish;Reading book;0.1;5-7;-;-;-
 LNG;language-thai;-;0.25;7;WEEKEND;-;-

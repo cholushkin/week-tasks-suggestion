@@ -8,7 +8,14 @@ namespace WeekTasks
     {
         public class Task
         {
-            public string Tag;
+            public enum Pref
+            {
+                FOCUS,
+                WEEK_END,
+                WEEK_START
+            }
+            
+            public string TaskType;
             public string TaskID; // Updated from Task to TaskID for clarity
             public string Description;
             public double PickUpPriority;
@@ -16,6 +23,12 @@ namespace WeekTasks
             public string Prefs;
             public string Remarks;
             public string Prompt;
+
+            public bool HasPreference(Pref pref)
+            {
+                return Prefs.Contains(pref.ToString());
+            }
+            
         }
 
         // Load tasks from the directory and return a list of tasks
@@ -37,7 +50,6 @@ namespace WeekTasks
                 LoadTasksFromFile(file, taskList); // Pass the list to fill
             }
 
-            Console.WriteLine($"Loaded {taskList.Count} tasks from {csvFiles.Length} files in {directoryPath}");
             return taskList; // Return the populated list
         }
 
@@ -56,7 +68,7 @@ namespace WeekTasks
                     // Parse the columns into a Task object
                     var taskEntry = new Task
                     {
-                        Tag = columns[0],
+                        TaskType = columns[0],
                         TaskID = columns[1], // Use TaskID instead of Task
                         Description = columns[2],
                         PickUpPriority = double.TryParse(columns[3], out double priority) ? priority : 0.0,
