@@ -12,6 +12,7 @@ namespace WeekTasks
             {
                 FOCUS,
                 WEEK_END,
+                WEEK_MIDDLE,
                 WEEK_START
             }
             
