@@ -10,7 +10,7 @@ namespace WeekTasks
             Success,
         }
         private const int DaysInWeek = 7;
-        private const int MaxTasksPerDay = 10;
+        private const int MaxTasksPerDay = 8;
         private List<Tasks.Task> _availableTasks;
         private List<Tasks.Task>[] _weekDistribution;
         private List<Tasks.Task>[] _weekBufferDistribution;
