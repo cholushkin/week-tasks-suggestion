@@ -1,5 +1,5 @@
 {
-    "tasks-dir": "Data/Tasks",    
+    "tasks-dir": "Data/TestTasks",    
     "motd": "Data/MessageOfTheDay.txt",
     "output-dir": "Output",
     "obsidian-vault-dir": "",

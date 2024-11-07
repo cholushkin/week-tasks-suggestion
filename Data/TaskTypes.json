@@ -1,74 +1,74 @@
 {
     "HLT": {
-        "description": "Tasks focused on health and well-being, including daily exercise routines, balanced nutrition planning, and mental wellness practices.",
-        "weekly-amount-days": [7],
-        "daily-amount": [1, 2],
-        "pick-up-priority": 3.0,
-        "sorting-index": 0,
-        "color": "#ff0000"
+        "Description": "Tasks focused on health and well-being, including daily exercise routines, balanced nutrition planning, and mental wellness practices.",
+        "WeeklyAmountDays": [7, 7],
+        "DailyAmount": [1, 2],
+        "Importance": 2.0,
+        "SortingIndex": 0,
+        "Color": "#ff0000"
     },
     "LNG": {
-        "description": "Language-learning activities aimed at mastering grammar, expanding vocabulary, practicing conversation, and daily language exercises.",
-        "weekly-amount-days": [7],
-        "daily-amount": [1, 2],
-        "pick-up-priority": 1.0,
-        "sorting-index": 1,
-        "color": "#ff9900"
+        "Description": "Language-learning activities aimed at mastering grammar, expanding vocabulary, practicing conversation, and daily language exercises.",
+        "WeeklyAmountDays": [7, 7],
+        "DailyAmount": [1, 2],
+        "Importance": 1.0,
+        "SortingIndex": 1,
+        "Color": "#ff9900"
     },
     "PRJ": {
-        "description": "Project-related work, involving time dedicated to ongoing projects, development tasks, and completing project milestones.",
-        "weekly-amount-days": [7],
-        "daily-amount": [1],
-        "pick-up-priority": 1.0,
-        "sorting-index": 2,
-        "color": "#9fc5e8"
+        "Description": "Project-related work, involving time dedicated to ongoing projects, development tasks, and completing project milestones.",
+        "WeeklyAmountDays": [7, 7],
+        "DailyAmount": [1, 1],
+        "Importance": 1.0,
+        "SortingIndex": 2,
+        "Color": "#9fc5e8"
     },
     "ART": {
-        "description": "Creative and artistic tasks, such as drawing, sculpting, making music, or engaging in other artistic disciplines.",
-        "weekly-amount-days": [2, 4],
-        "daily-amount": [1],
-        "pick-up-priority": 0.7,
-        "sorting-index": 3,
-        "color": "#9900ff"
+        "Description": "Creative and artistic tasks, such as drawing, sculpting, making music, or engaging in other artistic disciplines.",
+        "WeeklyAmountDays": [2, 4],
+        "DailyAmount": [1, 1],
+        "Importance": 0.7,
+        "SortingIndex": 3,
+        "Color": "#9900ff"
     },
     "DEV": {
-        "description": "Development-focused tasks, including coding practice, learning new technologies, and exploring software engineering concepts.",
-        "weekly-amount-days": [2, 4],
-        "daily-amount": [1],
-        "pick-up-priority": 0.6,
-        "sorting-index": 4,
-        "color": "#1155cc"
+        "Description": "Development-focused tasks, including coding practice, learning new technologies, and exploring software engineering concepts.",
+        "WeeklyAmountDays": [2, 4],
+        "DailyAmount": [1, 1],
+        "Importance": 0.6,
+        "SortingIndex": 4,
+        "Color": "#1155cc"
     },
     "EDU": {
-        "description": "Educational tasks, covering study in diverse subjects, reading academic material, and self-directed learning.",
-        "weekly-amount-days": [7],
-        "daily-amount": [1],
-        "pick-up-priority": 0.6,
-        "sorting-index": 5,
-        "color": "#6aa84f"
+        "Description": "Educational tasks, covering study in diverse subjects, reading academic material, and self-directed learning.",
+        "WeeklyAmountDays": [7, 7],
+        "DailyAmount": [1, 1],
+        "Importance": 0.6,
+        "SortingIndex": 5,
+        "Color": "#6aa84f"
     },
     "SKL": {
-        "description": "Skill-building activities, such as learning new practical skills, training with instruments, or practicing through hands-on tutorials.",
-        "weekly-amount-days": [7],
-        "daily-amount": [1],
-        "pick-up-priority": 0.8,
-        "sorting-index": 6,
-        "color": "#bf9000"
+        "Description": "Skill-building activities, such as learning new practical skills, training with instruments, or practicing through hands-on tutorials.",
+        "WeeklyAmountDays": [7, 7],
+        "DailyAmount": [1, 1],
+        "Importance": 0.8,
+        "SortingIndex": 6,
+        "Color": "#bf9000"
     },
     "ENT": {
-        "description": "Entertainment and leisure activities, like playing games, watching movies, or engaging in relaxation and rest.",
-        "weekly-amount-days": [2, 3],
-        "daily-amount": [1, 2],
-        "pick-up-priority": 0.6,
-        "sorting-index": 7,
-        "color": "#ffff00"
+        "Description": "Entertainment and leisure activities, like playing games, watching movies, or engaging in relaxation and rest.",
+        "WeeklyAmountDays": [2, 3],
+        "DailyAmount": [1, 2],
+        "Importance": 0.6,
+        "SortingIndex": 7,
+        "Color": "#ffff00"
     },
     "TODO": {
-        "description": "General task planning and organization activities, setting goals, reviewing plans, and scheduling upcoming tasks.",
-        "weekly-amount-days": [0, 2],
-        "daily-amount": [1],
-        "pick-up-priority": 0.3,
-        "sorting-index": 8,
-        "color": "#ffffff"
+        "Description": "General task planning and organization activities, setting goals, reviewing plans, and scheduling upcoming tasks.",
+        "WeeklyAmountDays": [0, 2],
+        "DailyAmount": [1, 1],
+        "Importance": 0.3,
+        "SortingIndex": 8,
+        "Color": "#ffffff"
     }
 }

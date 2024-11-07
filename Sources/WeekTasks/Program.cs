@@ -55,7 +55,9 @@ namespace WeekTasks
                 Console.WriteLine($"Loaded {MessageOfTheDay.MessageOfTheDayStrings.Count} messages of the day from {Settings["motd"]}\n");
             }
 
-            new SuggestionAlgorithm().Generate(Settings, TaskTypes, TaskList);
+            var suggestionAlgorithm = new SuggestionAlgorithm(Settings, TaskTypes, TaskList);
+            suggestionAlgorithm.Distribute();
+                //.Generate();
 
             return result;
         }

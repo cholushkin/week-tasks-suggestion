@@ -1,0 +1,17 @@
+task-type;task-id;task-description;pickup-priority;days;prefs;remarks;prompt
+LNG;language-english;-;0.45;7;-;-;-
+LNG;language-swedish;-;0.5;7;FOCUS;-;-
+LNG;language-swedish;Reading book;0.1;5-7;-;-;-
+LNG;language-thai;-;0.25;1-3;WEEK_END;-;-
+LNG;language-tagalog;-;0.25;1-3;WEEK_END;-;-
+HLT;app-workout;-;0.5;7;FOCUS;-;-
+HLT;app-workout-abs;-;0.5;7;WEEK_DAYS:014;-;-
+HLT;app-workout-test1;-;0.5;3;-;-;-
+HLT;app-workout-test2;-;0.5;2-4;-;-;-
+PRJ;prj-test;-;0.5;3-5;-;-;-
+ART;art-test;-;0.5;3-5;-;-;-
+DEV;dev-test;-;0.5;3-5;-;-;-
+EDU;edu-test;-;0.5;3-5;-;-;-
+SKL;skl-test;-;0.5;3-5;-;-;-
+ENT;ent-test;-;0.5;3-5;-;-;-
+TODO;todo-test;-;0.5;3-5;-;-;-

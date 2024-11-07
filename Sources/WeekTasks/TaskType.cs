@@ -14,7 +14,7 @@ namespace WeekTasks
         [JsonConverter(typeof(ValueTupleConverter))]
         public (int from, int to) DailyAmount { get; set; }
 
-        public double PickUpPriority { get; set; }
+        public double Importance { get; set; }
         public int SortingIndex { get; set; }
         public string Color { get; set; }
 

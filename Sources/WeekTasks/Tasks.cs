@@ -13,7 +13,8 @@ namespace WeekTasks
                 FOCUS,
                 WEEK_END,
                 WEEK_MIDDLE,
-                WEEK_START
+                WEEK_START,
+                WEEK_DAYS
             }
             
             public string TaskType;
