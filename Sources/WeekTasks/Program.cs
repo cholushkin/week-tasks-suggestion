@@ -1,5 +1,7 @@
 ﻿using System.CommandLine;
 using System.Text.Json;
+using LocalAPIChat;
+using WeekTasks.Utils.Random;
 
 namespace WeekTasks
 {
@@ -12,7 +14,7 @@ namespace WeekTasks
         private static List<Tasks.Task> TaskList { get; set; } = [];
         private static MessageOfTheDay MessageOfTheDay;
 
-        static int Main(string[] args)
+        static async Task<int> Main(string[] args)
         {
             SetDefaultColorScheme();
 
@@ -25,12 +27,23 @@ namespace WeekTasks
                 description:
                 $"Path to the task configuration JSON file. Defaults to '{DefaultSettingsPath}' if not specified.");
 
+            var seedOverride = new Option<int>(
+                "--seed",
+                description: "Override seed to have same results"
+            );
+
             // Create root command and add options
             var rootCommand = new RootCommand("Week tasks suggestion utility")
             {
                 startDateOption,
-                settingsOption
+                settingsOption,
+                seedOverride
             };
+
+            // todo: set from args
+            //RandomHelper.Rnd.SetState(new LinearConRng.State(342094));
+            var seed = RandomHelper.Rnd.GetState().AsNumber();
+            
             
             rootCommand.SetHandler((string startDate, string settingsPath) =>
             {
@@ -54,11 +67,22 @@ namespace WeekTasks
                 Console.WriteLine($"Loaded {TaskList.Count} tasks from {Settings["tasks-dir"]} directory\n");
                 Console.WriteLine($"Loaded {MessageOfTheDay.MessageOfTheDayStrings.Count} messages of the day from {Settings["motd"]}\n");
             }
+            
+            Console.WriteLine($"RNG seed: {RandomHelper.Rnd.GetState().AsNumber()}\n");
 
             var suggestionAlgorithm = new SuggestionAlgorithm(Settings, TaskTypes, TaskList);
             suggestionAlgorithm.Distribute();
-                //.Generate();
+            await suggestionAlgorithm.ProcessPrompt(); 
+            suggestionAlgorithm.PrintWeekDistribution();
 
+            if (!string.IsNullOrEmpty(Settings["obsidian-vault-dir"]))
+            {
+                var motd = MessageOfTheDay.LoadFromTextFile(Settings["motd"]);
+                DateTime startDate = DateTime.Parse(Settings["start-date"]);
+                var md = new MarkdownFileWriter(startDate,seed.ToString(), Settings["obsidian-vault-dir"], motd);
+                md.Write(suggestionAlgorithm.WeekDistribution);
+            }
+            
             return result;
         }
         
@@ -73,7 +97,7 @@ namespace WeekTasks
         {
             var today = DateTime.Now;
             int daysUntilNextMonday = ((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7;
-            var nextMonday = today.AddDays(daysUntilNextMonday); 
+            var nextMonday = today.AddDays(daysUntilNextMonday);
             return nextMonday.ToString("dd-MMM-yyyy");
         }
         

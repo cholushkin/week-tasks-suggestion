@@ -1,0 +1,11 @@
+task-type;task-id;task-description;pickup-priority;days;prefs;remarks;prompt
+ART;pencil-sketching;Practice pencil drawing, following some tutorial, book, lesson, technic;0.2;3-5;-;-;ai:What are good pencil drawing practice tips?
+ARt;plasticine-practice;Practice plasticine sculpting, look for tutorial;0.2;1-2;-;-;ai:Any tips for working with plasticine
+ART;digital-sketching;Practicing digital sketching, following some tutorial, book, lesson, technic;0.2;2-5;-;-;ai:What are good digital sketching practice tips?
+ART;drawing-vector;Practice vector drawing, following some tutorial, book, lesson, technic;0.2;3-5;-;-;ai:What are good drawing practice tips?
+ART;drawing-painting;practice digital painting, following some tutorial, book, lesson, technic;0.2;2-5;-;-;ai:what are good digital painting practice tips?
+ART;ai-generate-images;Practice in generative art together with painting;0.2;3-5;-;-;ai:tips on combining digital painting with generative art
+ART;blender-texturing;Learn blender texturing;0.2;2-4;-;-;google:blender texturing
+ART;blender-texturing;Learn blender rigging;0.2;2-4;-;-;google:blender rigging
+ART;blender-texturing;Learn blender animation;0.2;2-4;-;-;google:blender animation
+ART;blender-texturing;Learn blender sculpting;0.2;2-4;-;-;google:blender sculpting

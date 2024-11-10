@@ -1,0 +1,8 @@
+task-type;task-id;task-description;pickup-priority;days;prefs;remarks;prompt
+HLT;workout-full-body;Full body workout using application;1.0;7-7;FOCUS;-;-
+HLT;workout-dumbells;Exercise with dumbells, current level: 3x13;0.2;3-5;-;-;ai:tips for dumbells workout
+HLT;workout-elliptic;30-60 minutes of elliptical-trainer;0.2;3-5;-;-;ai:tips for elliptical-trainer workout
+HLT;workout-walk;Intensivly walk for at least 1 hr;0.2;3-5;-;-;ai:walking workout overview
+HLT;workout-abs;App or set of exercises for ABS;0.2;2-5;-;-;-
+HLT;eye-training;;0.2;2-3;-;-;-
+HLT;memory-training;;0.2;2-3;-;-;-

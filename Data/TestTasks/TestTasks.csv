@@ -1,17 +1,21 @@
 task-type;task-id;task-description;pickup-priority;days;prefs;remarks;prompt
-LNG;language-english;-;0.45;7;-;-;-
-LNG;language-swedish;-;0.5;7;FOCUS;-;-
-LNG;language-swedish;Reading book;0.1;5-7;-;-;-
-LNG;language-thai;-;0.25;1-3;WEEK_END;-;-
-LNG;language-tagalog;-;0.25;1-3;WEEK_END;-;-
-HLT;app-workout;-;0.5;7;FOCUS;-;-
-HLT;app-workout-abs;-;0.5;7;WEEK_DAYS:014;-;-
-HLT;app-workout-test1;-;0.5;3;-;-;-
-HLT;app-workout-test2;-;0.5;2-4;-;-;-
-PRJ;prj-test;-;0.5;3-5;-;-;-
-ART;art-test;-;0.5;3-5;-;-;-
-DEV;dev-test;-;0.5;3-5;-;-;-
-EDU;edu-test;-;0.5;3-5;-;-;-
-SKL;skl-test;-;0.5;3-5;-;-;-
-ENT;ent-test;-;0.5;3-5;-;-;-
-TODO;todo-test;-;0.5;3-5;-;-;-
+LNG;language-english-tst;-;0.45;7;-;-;-
+LNG;language-swedish-tst;-;0.5;7;FOCUS;-;some interesting fact about swedish language
+LNG;language-swedish-tst2;Reading book;0.1;5-7;-;-;-
+LNG;language-thai-tst;-;0.25;1-3;WEEK_END;-;-
+LNG;language-tagalog-tst;-;0.25;1-3;WEEK_END;-;-
+HLT;app-workout-tst;-;0.5;7;FOCUS;-;-
+HLT;app-workout-abs-tst;-;0.5;7;WEEK_DAYS:014;-;-
+HLT;app-workout-tst;-;0.5;3;-;-;-
+HLT;app-workout-tst2;-;0.5;2-4;-;-;-
+PRJ;prj-tst;-;0.5;3-5;-;-;-
+ART;art-tst;-;0.5;3-5;-;-;-
+DEV;dev-tst;-;0.5;3-5;-;-;-
+EDU;edu-tst;-;0.5;3-5;-;-;-
+SKL;skl-tst;-;0.5;3-5;-;-;-
+ENT;ent-tst;-;0.5;3-5;WEEK_END;-;-
+ENT;ent-tst2;-;0.5;3-5;-;-;-
+ENT;ent-tst3;-;0.5;3-5;-;-;-
+ENT;ent-tst4;-;0.5;3-5;-;-;-
+ENT;ent-tst5;-;0.5;3-5;-;-;-
+TODO;todo-tst;-;0.5;1-1;-;-;-

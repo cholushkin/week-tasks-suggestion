@@ -1,19 +1,13 @@
+using System.Diagnostics;
 using WeekTasks.Utils.Random;
 
 namespace WeekTasks
 {
     public class SuggestionAlgorithm
     {
-        private enum TaskPlacementResult
-        {
-            Success,
-        }
         private const int DaysInWeek = 7; // in case you want to change your planing milestone length
         private const int MaxTasksPerDay = 8;
-        // private List<Tasks.Task> _availableTasks;
-        // private List<Tasks.Task>[] _weekDistribution;
-        // private List<Tasks.Task>[] _weekBufferDistribution;
-        
+
         private Dictionary<string, int> _taskTypesPlacedCount; // Track placed task counts by type
 
         private int _safetyIterationCounter;
@@ -23,7 +17,10 @@ namespace WeekTasks
         private readonly List<Tasks.Task> _taskList;
         private WeekDistribution _weekDistribution;
 
-        public SuggestionAlgorithm(Dictionary<string, string> settings, Dictionary<string, TaskType> taskTypes, List<Tasks.Task> taskList)
+        public WeekDistribution WeekDistribution => _weekDistribution;
+
+        public SuggestionAlgorithm(Dictionary<string, string> settings, Dictionary<string, TaskType> taskTypes,
+            List<Tasks.Task> taskList)
         {
             _settings = settings;
             _taskTypes = taskTypes;
@@ -35,21 +32,207 @@ namespace WeekTasks
             _safetyIterationCounter = 0;
             _weekDistribution = FillToMaximum();
             PopulateWithTasks(_weekDistribution);
+            Console.WriteLine("Before adjustment:");
+            PrintWeekDistribution();
+            Adjust(_weekDistribution);
+        }
+
+        public async Task ProcessPrompt()
+        {
+            // google:
+            // ai:
+            // empty: nullOrEmpty or "-"
+            // error:
+            
+            // // Instantiate the OpenAIHelper with your API key
+            // IArtificialIntelligence AIBridge = new LocalAI();
+            //
+            // // Filter tasks with a non-empty Prompt
+            // var tasksWithPrompts = _taskList
+            //     .Where(task => !string.IsNullOrWhiteSpace(task.Prompt) && task.Prompt.Length >= 3).ToList();
+            //
+            // foreach (var task in tasksWithPrompts)
+            // {
+            //     try
+            //     {
+            //         // Get AI response for each task's Prompt
+            //         Console.WriteLine($"prompting: {task.Prompt}");
+            //         var response = await AIBridge.GetResponseFromAIAsync(task.Prompt);
+            //         task.AIResponce = response; // Set the AI response to the task's AIResponce property
+            //     }
+            //     catch (Exception ex)
+            //     {
+            //         Console.WriteLine($"Error processing task {task.TaskID}: {ex.Message}");
+            //     }
+            // }
         }
         
         
-        // Fill with not connected slots to the maximum state
+        private Dictionary<string, HashSet<int>> GetTaskUsage(WeekDistribution weekDistribution)
+        {
+            var taskTypeDayUsage = new Dictionary<string, HashSet<int>>();
+
+            // Track which days each task type appears on
+            for (int dayIndex = 0; dayIndex < DaysInWeek; dayIndex++)
+            {
+                foreach (var slot in weekDistribution.Week[dayIndex].Tasks)
+                {
+                    if (!taskTypeDayUsage.ContainsKey(slot.TaskTypeName))
+                    {
+                        taskTypeDayUsage[slot.TaskTypeName] = new HashSet<int>();
+                    }
+                    taskTypeDayUsage[slot.TaskTypeName].Add(dayIndex); // Track unique days
+                }
+            }
+
+            return taskTypeDayUsage;
+        }
+
+        private void Adjust(WeekDistribution weekDistribution)
+        {
+            const int safeStepCounter = 4024;
+            int i = 0;
+            int levelOfStrict = 0;
+            
+            while (i++<safeStepCounter)
+            {
+                var k = i / (float)safeStepCounter;
+                levelOfStrict = (int)(k * 3); // 0..1..2
+                
+                var taskTypeDayUsage = GetTaskUsage(_weekDistribution);
+                var day = RandomHelper.Rnd.FromList(_weekDistribution.Week);
+                var task = RandomHelper.Rnd.FromList(day.Tasks);
+                var maxWeeklyAmount = _taskTypes[task.TaskTypeName].WeeklyAmountDays.to;
+                var dailyAmountMax = _taskTypes[task.TaskTypeName].DailyAmount.to;
+                var deleteOnlyDisconnected = true;
+
+                if (levelOfStrict > 0)
+                {
+                    maxWeeklyAmount = (_taskTypes[task.TaskTypeName].WeeklyAmountDays.from +
+                                       _taskTypes[task.TaskTypeName].WeeklyAmountDays.to) / 2;
+                    dailyAmountMax = Math.Max(1, dailyAmountMax - 1);
+                }
+
+                if (levelOfStrict > 1)
+                {
+                    deleteOnlyDisconnected = false;
+                    maxWeeklyAmount = _taskTypes[task.TaskTypeName].WeeklyAmountDays.from;
+                    
+                }
+                
+                var taskTypeThisDayCount = day.Tasks.Count(x => x.TaskTypeName == task.TaskTypeName);
+                if (taskTypeThisDayCount > dailyAmountMax)
+                {
+                    if(day.Tasks.Count <= MaxTasksPerDay)
+                        continue;
+                    if(task.PlacedFocused)
+                        continue;
+                    if(task.PlacedWithPreference)
+                        continue;
+                    if (deleteOnlyDisconnected)
+                    {
+                        if (task.PreviousConnected != null)
+                            continue;
+                        if (task.NextConnected != null)
+                            continue;
+                    }
+                    day.Tasks.Remove(task);
+                    Console.WriteLine("b.removing "+ task.TaskTypeName);
+                }
+
+
+                // task used more then max week amount in settings 
+                if (taskTypeDayUsage[task.TaskTypeName].Count > maxWeeklyAmount)
+                {
+                    if(day.Tasks.Count <= MaxTasksPerDay)
+                        continue;
+                    if(task.PlacedFocused)
+                        continue;
+                    if(task.PlacedWithPreference)
+                        continue;
+                    if (deleteOnlyDisconnected)
+                    {
+                        if (task.PreviousConnected != null)
+                            continue;
+                        if (task.NextConnected != null)
+                            continue;
+                    }
+
+
+                    
+                    day.Tasks.Remove(task);
+                    Console.WriteLine("a.removing "+ task.TaskTypeName);
+                }
+                
+                var successCounter = 0;
+                foreach (var d in weekDistribution.Week)
+                {
+                    if (d.Tasks.Count <= MaxTasksPerDay)
+                        successCounter++;
+                }
+
+                if (successCounter == DaysInWeek)
+                {
+                    Console.WriteLine("Adjusting done, condition reached");
+                    break;
+                }
+            }
+        }
+
+
+        private List<WeekDistribution.TaskSlot> GetConnectedSlots(WeekDistribution.TaskSlot slot)
+        {
+            var connectedSlots = new List<WeekDistribution.TaskSlot> { slot };
+
+            // Traverse previous and next connected slots to gather all linked slots
+            var current = slot.PreviousConnected;
+            while (current != null)
+            {
+                connectedSlots.Add(current);
+                current = current.PreviousConnected;
+            }
+
+            current = slot.NextConnected;
+            while (current != null)
+            {
+                connectedSlots.Add(current);
+                current = current.NextConnected;
+            }
+
+            return connectedSlots;
+        }
+
+
+        public void PrintWeekDistribution()
+        {
+            Console.WriteLine("Week Distribution:");
+            for (int dayIndex = 0; dayIndex < DaysInWeek; dayIndex++)
+            {
+                Console.WriteLine($"Day {dayIndex + 1}:");
+
+                foreach (var slot in _weekDistribution.Week[dayIndex].Tasks)
+                {
+                    string taskInfo = slot.Task == null
+                        ? $"#{slot.TaskTypeName}: [empty]"
+                        : $"#{slot.TaskTypeName}: {slot.Task.TaskID}";
+                    Console.WriteLine($"    {taskInfo}");
+                }
+            }
+
+            Console.WriteLine();
+        }
+
+        // Fill with not connected slots to the maximum state avoiding WeeklyAmountDays restriction
         private WeekDistribution FillToMaximum()
         {
             var weekDistribution = new WeekDistribution(DaysInWeek, MaxTasksPerDay);
-            
+
             foreach (var taskTypeDescriptor in _taskTypes)
             {
                 var taskTypeName = taskTypeDescriptor.Key;
                 var taskDailyAmountMax = taskTypeDescriptor.Value.DailyAmount.to;
-                var taskWeeklyAmountMax = taskTypeDescriptor.Value.WeeklyAmountDays.to;
 
-                for (int d = 0; d < taskWeeklyAmountMax; ++d)
+                for (int d = 0; d < DaysInWeek; ++d)
                 {
                     for (int t = 0; t < taskDailyAmountMax; ++t)
                     {
@@ -60,7 +243,10 @@ namespace WeekTasks
             }
 
             if (_settings["log-level"] == "verbose")
+            {
+                Console.WriteLine("Maximized:");
                 Console.WriteLine(weekDistribution.ToString());
+            }
 
             return weekDistribution;
         }
@@ -72,58 +258,93 @@ namespace WeekTasks
             var taskQueue = new Queue<List<Tasks.Task>>();
             taskQueue.Enqueue(focusTasks);
             taskQueue.Enqueue(regularTasks);
-            
+
             while (taskQueue.Count > 0)
             {
                 var currentTasks = taskQueue.Dequeue(); // focused or regular tasks to work with
-                DistributeTasksImpl(currentTasks);
+                DistributeTasksImpl(currentTasks, currentTasks == focusTasks);
             }
+
+            // DistributeForEmptySlots(_taskList.Where(task =>
+            //     (string.IsNullOrEmpty(task.Prefs) || task.Prefs.Length < 2) && task.Days.to == 1).ToList());
         }
 
-        private void DistributeTasksImpl(List<Tasks.Task> availableTasks)
+
+        // - Get set of available task types in availableTasks -> A
+        // - Get set of available task types in week which are not taken -> B
+        // - C is intersection
+        // - while availableTasks is not empty and slots are still available
+        //    -try to spawn task (removing them from available tasks in any case)
+        private void DistributeTasksImpl(List<Tasks.Task> availableTasks, bool focused)
         {
+            // Loop until all tasks are distributed or there are no available slots
             while (availableTasks.Count > 0)
             {
-                var availableTypes = GetAvailableTypesToPlace(_weekDistribution);
-                
-                var importantTypes = availableTypes
-                    .OrderByDescending(taskTypeName => _taskTypes[taskTypeName].Importance)
-                    .ToList();
+                // Step 1: Determine sets A, B, and C
+                var availableTypesInTasks = new HashSet<string>(availableTasks.Select(t => t.TaskType)); // Set A
+                var availableTypesInWeek = GetAvailableTypesToPlace(_weekDistribution); // Set B
+                var spawnableTypes = availableTypesInTasks.Intersect(availableTypesInWeek).ToList(); // C = A ∩ B
 
-                foreach (var taskType in importantTypes)
+
+                // Step 2: Prioritize spawnable task types by importance
+                var prioritizedTypes = spawnableTypes
+                    .OrderByDescending(type => _taskTypes[type].Importance)
+                    .ToList();
+                bool taskPlaced = false;
+
+                // Step 3: Try to place tasks from the prioritized types
+                foreach (var taskType in prioritizedTypes)
                 {
-                    var tasks = availableTasks.Where(t => t.TaskType == taskType).ToList();
-                    if (tasks.Count > 0)
+                    // Filter tasks of the current type
+                    var tasksOfType = availableTasks.Where(t => t.TaskType == taskType).ToList();
+
+                    if (tasksOfType.Count > 0)
                     {
-                        var taskToPlace = RandomHelper.Rnd.SpawnEvent(tasks, task => (float)task.PickUpPriority, out _);
+                        // Select a task with a weighted random approach based on priority
+                        var taskToPlace =
+                            RandomHelper.Rnd.SpawnEvent(tasksOfType, task => (float)task.PickUpPriority, out _);
+
+                        // Remove the selected task from available tasks
                         availableTasks.Remove(taskToPlace);
-                        TryToPlace(_weekDistribution, taskToPlace);
+
+                        // Attempt to place the task in the distribution
+                        if (TryToPlace(_weekDistribution, taskToPlace, focused))
+                        {
+                            taskPlaced = true;
+                            break;
+                        }
                     }
                 }
-                
-                if (_safetyIterationCounter++ > 1000)
+
+                // If no tasks were placed in this iteration, exit to avoid an infinite loop
+                if (!taskPlaced)
                     return;
+                // Safety check to prevent excessive iterations
+                if (_safetyIterationCounter++ > 1000)
+                {
+                    Console.WriteLine("Safety iteration limit reached. Exiting task distribution.");
+                    return;
+                }
             }
         }
-
-        private bool TryToPlace(WeekDistribution weekDistribution, Tasks.Task taskToPlace)
+        
+        private WeekDistribution.TaskSlot GetEmptySlot(WeekDistribution weekDistribution, int dayIndex,
+            string taskTypeName)
         {
-            WeekDistribution.TaskSlot GetEmptySlot(int dayIndex, string taskTypeName)
-            {
-                var slot =  weekDistribution.Week[dayIndex].Tasks.FirstOrDefault(t => t.TaskTypeName == taskTypeName);
-                if (slot == null)
-                    return null;
-                if (slot.Task == null)
-                    return slot;
+            var slot = weekDistribution.Week[dayIndex].Tasks.FirstOrDefault(
+                t => t.Task == null && t.TaskTypeName == taskTypeName);
+            if (slot == null)
                 return null;
-            }
-            
+            return slot;
+        }
+
+        private bool TryToPlace(WeekDistribution weekDistribution, Tasks.Task taskToPlace, bool focused)
+        {
             bool weekEndPreferable = taskToPlace.HasPreference(Tasks.Task.Pref.WEEK_END);
             bool weekStartPreferable = taskToPlace.HasPreference(Tasks.Task.Pref.WEEK_START);
             bool weekMiddlePreferable = taskToPlace.HasPreference(Tasks.Task.Pref.WEEK_MIDDLE);
             bool specificDaysPreferable = taskToPlace.HasPreference(Tasks.Task.Pref.WEEK_DAYS);
             var days = RandomHelper.Rnd.FromRangeInt(taskToPlace.Days);
-            int placedCounter = 0;
 
             List<WeekDistribution.TaskSlot> emptySlots = new List<WeekDistribution.TaskSlot>();
 
@@ -132,8 +353,9 @@ namespace WeekTasks
                 // Start from Monday (index 0) and go to the end of the week
                 for (int i = 0; i < days; i++)
                 {
-                    var slot = GetEmptySlot(i, taskToPlace.TaskType);
-                    if(slot == null)
+                    var slot = GetEmptySlot(_weekDistribution, i, taskToPlace.TaskType);
+
+                    if (slot == null)
                         break;
                     emptySlots.Add(slot);
                 }
@@ -147,8 +369,8 @@ namespace WeekTasks
                     int dayToPlace = middleIndex + i;
                     if (dayToPlace >= DaysInWeek)
                         break;
-                    var slot = GetEmptySlot(i, taskToPlace.TaskType);
-                    if(slot == null)
+                    var slot = GetEmptySlot(_weekDistribution, i, taskToPlace.TaskType);
+                    if (slot == null)
                         break;
                     emptySlots.Add(slot);
                 }
@@ -158,39 +380,62 @@ namespace WeekTasks
                 // Start from Sunday (index 6) and move to the start of the week
                 for (int i = 0; i < days; i++)
                 {
-                    var slot = GetEmptySlot(6 - i, taskToPlace.TaskType);
-                    if(slot == null)
+                    var slot = GetEmptySlot(_weekDistribution, 6 - i, taskToPlace.TaskType);
+                    if (slot == null)
                         break;
                     emptySlots.Add(slot);
                 }
-                
+
+                emptySlots.Reverse();
             }
             else if (specificDaysPreferable)
             {
-                throw new NotImplementedException();
+                //throw new NotImplementedException();
             }
 
             // Can't event place a minimum amount on preferred position ?
+            var usePreferencedDistribution = true;
             if (emptySlots.Count < taskToPlace.Days.from)
             {
-                _weekBufferDistribution = CloneWeekDistribution(_weekDistribution);
-                placedCounter = 0;
-
-                // shuffle days of week and try to place requested amount in random days
-                int[] rndDays = new[] { 0, 1, 2, 3, 4, 5, 6 };
-                RandomHelper.Rnd.ShuffleInplace(rndDays);
+                // get all empty slots from every day
+                List<WeekDistribution.TaskSlot> allDays = new List<WeekDistribution.TaskSlot>();
 
                 for (int i = 0; i < days; i++)
                 {
-                    if (TryToPlace(taskToPlace, rndDays[i])) // Distribute from Monday to Sunday
-                        placedCounter++;
+                    var slot = GetEmptySlot(_weekDistribution, i, taskToPlace.TaskType);
+                    if (slot != null)
+                        allDays.Add(slot);
                 }
 
-                if (placedCounter >= taskToPlace.Days.from)
-                    Place(_weekBufferDistribution, placedCounter, taskToPlace);
+                if (allDays.Count > emptySlots.Count)
+                {
+                    usePreferencedDistribution = false;
+                    emptySlots = allDays;
+                }
             }
-            
-            
+
+            // Place task to empty slots and link them together
+            WeekDistribution.TaskSlot prev = null;
+            foreach (var slot in emptySlots)
+            {
+                Debug.Assert(taskToPlace.TaskType == slot.TaskTypeName);
+                slot.Task = taskToPlace;
+                slot.PlacedWithPreference = usePreferencedDistribution;
+                slot.PlacedFocused = focused;
+
+                // Linking
+                slot.PreviousConnected = prev;
+                if (prev != null)
+                    prev.NextConnected = slot;
+
+                prev = slot;
+            }
+
+            if (_settings["log-level"] == "verbose")
+                Console.WriteLine(
+                    $"Trying to place {taskToPlace.TaskType}:{taskToPlace.TaskID}. Placed: {emptySlots.Count}, usePreferencedDistribution: {usePreferencedDistribution}");
+
+            return emptySlots.Count > 0;
         }
 
         private HashSet<string> GetAvailableTypesToPlace(WeekDistribution weekDistribution)
@@ -211,136 +456,8 @@ namespace WeekTasks
                     }
                 }
             }
+
             return availableSlotNames;
         }
-
-
-
-        // public void Generate(Dictionary<string, string> settings, Dictionary<string, TaskType> taskTypes, List<Tasks.Task> taskList)
-        // {
-        //     Debug.Assert(DaysInWeek == 7);
-        //     _availableTasks = new List<Tasks.Task>(taskList);
-        //     _weekDistribution = new List<Tasks.Task>[DaysInWeek];
-        //     for (int i = 0; i < _weekDistribution.Length; i++)
-        //         _weekDistribution[i] = [];
-        //     _safetyIterationCounter = 0;
-        //     
-        //     while (!IsCompleted())
-        //     {
-        //         var focusTasks = taskList.Where(task => task.HasPreference(Tasks.Task.Pref.FOCUS)).ToArray();
-        //         if (focusTasks.Length > 0)
-        //         {
-        //             var taskToPlace = RandomHelper.Rnd.SpawnEvent(focusTasks, task => (float)task.PickUpPriority, out _);
-        //             _weekBufferDistribution = CloneWeekDistribution(_weekDistribution);
-        //             var days = RandomHelper.Rnd.FromRangeInt(taskToPlace.Days);
-        //             
-        //             Debug.Assert(days >= 0 && days <= DaysInWeek);
-        //             
-        //             bool weekEndPreferable = taskToPlace.HasPreference(Tasks.Task.Pref.WEEK_END);
-        //             bool weekStartPreferable = taskToPlace.HasPreference(Tasks.Task.Pref.WEEK_START);
-        //             bool weekMiddlePreferable = taskToPlace.HasPreference(Tasks.Task.Pref.WEEK_MIDDLE);
-        //
-        //             int placedCounter = 0;
-        //             
-        //             if (weekStartPreferable)
-        //             {
-        //                 // Start from Monday (index 0) and go to the end of the week
-        //                 for (int i = 0; i < days; i++)
-        //                 {
-        //                     if (TryToPlace(taskToPlace, i)) // Distribute from Monday to Sunday
-        //                         placedCounter++;
-        //                 }
-        //             }
-        //             else if (weekMiddlePreferable)
-        //             {
-        //                 // Start from Wednesday (index 3) and move forward
-        //                 int middleIndex = 3;
-        //                 for (int i = 0; i < days; i++)
-        //                 {
-        //                     int dayToPlace = middleIndex + i;
-        //                     if (dayToPlace >= DaysInWeek)
-        //                         break;
-        //                     if( TryToPlace(taskToPlace, dayToPlace) )
-        //                         placedCounter++;
-        //                 }
-        //             }
-        //             else if (weekEndPreferable)
-        //             {
-        //                 // Start from Sunday (index 6) and move to the start of the week
-        //                 for (int i = 0; i < days; i++)
-        //                 {
-        //                     if(TryToPlace(taskToPlace, 6 - i)) // Distribute from Sunday to Monday
-        //                         placedCounter++;
-        //                 }
-        //             }
-        //
-        //             // Can't event place a minimum amount on preferred position ?
-        //             if (placedCounter < taskToPlace.Days.from)
-        //             {
-        //                 _weekBufferDistribution = CloneWeekDistribution(_weekDistribution);
-        //                 placedCounter = 0;
-        //                 
-        //                 // shuffle days of week and try to place requested amount in random days
-        //                 int[] rndDays = new[] { 0, 1, 2, 3, 4, 5, 6 };
-        //                 RandomHelper.Rnd.ShuffleInplace(rndDays);
-        //                 
-        //                 for (int i = 0; i < days; i++)
-        //                 {
-        //                     if (TryToPlace(taskToPlace, rndDays[i])) // Distribute from Monday to Sunday
-        //                         placedCounter++;
-        //                 }
-        //
-        //                 if (placedCounter >= taskToPlace.Days.from)
-        //                     Place(_weekBufferDistribution, placedCounter, taskToPlace);
-        //             }
-        //             else
-        //             {
-        //                 Place(_weekBufferDistribution, placedCounter, taskToPlace);
-        //             }
-        //         }
-        //         else
-        //         {
-        //             
-        //         }
-        //         _safetyIterationCounter++;
-        //     }
-        //     
-        //     Console.WriteLine($"Seed: {RandomHelper.Rnd.GetState().AsNumber()}");
-        // }
-        //
-        // private void Place(List<Tasks.Task>[] weekBufferDistribution, int placedCounter, Tasks.Task focusedTask)
-        // {
-        //     _weekDistribution = CloneWeekDistribution(weekBufferDistribution);
-        //     UpdateTaskTypesCount(focusedTask.TaskType, placedCounter);
-        //     _availableTasks.Remove(focusedTask);
-        // }
-        //
-        // private bool TryToPlace(Tasks.Task task, int dayOfWeekIndex)
-        // {
-        //     var day = _weekBufferDistribution[dayOfWeekIndex];
-        //     if (day.Count >= MaxTasksPerDay)
-        //         return false;
-        //     day.Add(task);
-        //     return true;
-        // }
-        //
-        //
-        // private void UpdateTaskTypesCount(string taskType, int placedCount)
-        // {
-        //     if (!_taskTypesPlacedCount.TryAdd(taskType, placedCount))
-        //         _taskTypesPlacedCount[taskType] += placedCount;
-        // }
-        //
-        // private List<Tasks.Task>[] CloneWeekDistribution(List<Tasks.Task>[] weekDistribution)
-        // {
-        //     var clonedDistribution = new List<Tasks.Task>[weekDistribution.Length];
-        //     for (int i = 0; i < weekDistribution.Length; i++)
-        //     {
-        //         // Create a new list for each day and add a copy of the tasks
-        //         clonedDistribution[i] = new List<Tasks.Task>(weekDistribution[i]);
-        //     }
-        //     return clonedDistribution;
-        // }
-        //
     }
 }

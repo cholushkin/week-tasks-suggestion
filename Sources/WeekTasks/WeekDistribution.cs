@@ -5,8 +5,10 @@ namespace WeekTasks
         public class TaskSlot
         {
             public string TaskTypeName { get; private set; }
-            public TaskSlot PreviousConnected { get; internal set; }
-            public TaskSlot NextConnected { get; internal set; }
+            public TaskSlot PreviousConnected { get; set; }
+            public TaskSlot NextConnected { get; set; }
+            public bool PlacedWithPreference;
+            public bool PlacedFocused;
 
             public Tasks.Task Task
             {
@@ -107,13 +109,12 @@ namespace WeekTasks
 
             for (int dayIndex = 0; dayIndex < Week.Count; dayIndex++)
             {
-                result.AppendLine($"Day {dayIndex + 1}:");
+                result.Append($"Day {dayIndex + 1}: ");
 
                 foreach (var taskSlot in Week[dayIndex].Tasks)
                 {
-                    result.AppendLine($"  - Task: {taskSlot.TaskTypeName}");
+                    result.Append($"{taskSlot.TaskTypeName} ");
                 }
-
                 result.AppendLine(); // Add an extra newline for better separation between days
             }
 
