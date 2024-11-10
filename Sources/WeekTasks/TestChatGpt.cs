@@ -6,7 +6,7 @@ namespace WeekTasks;
 
 public class TestChatGpt
 {
-    private static readonly string apiKey = "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";
+    private static readonly string apiKey = "";
     private static readonly HttpClient httpClient = new HttpClient();
     
  
