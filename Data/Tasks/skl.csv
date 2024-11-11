@@ -1,0 +1,7 @@
+task-type;task-id;task-description;pickup-priority;days;prefs;remarks;prompt
+SKL;study-piano;Practice in piano;0.5;3-5;-;-;-
+SKL;study-drums;Practice in drums;0.5;3-5;-;-;-
+SKL;drone-practice;Practice drone piloting;0.5;3-5;-;-;-
+SKL;social-media-post;Make a post:tubmlr,fb,instagram;0.5;1-3;-;-;-
+SKL;voice-development;Voice/vocal developing;0.2;0.2;-;-;-
+SKL;bitwig-practicing;Bitwig practicing;0.2;1;-;-;-

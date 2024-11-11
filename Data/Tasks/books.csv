@@ -1,0 +1,24 @@
+task-type;task-id;task-description;pickup-priority;days;prefs;remarks;prompt
+EDU;read-boo;Design Patterns via C#. Приемы объектно-ориентированного проектирования.;0.2;3-5;-;-;-
+DEV;read-article;http://forcoder.ru/c-sharp/c-sovety-programmistam-1298;0.2;1-2;-;-;-
+DEV;read-article;http://forcoder.ru/net/optimizaciya-prilozheniy-na-platforme-net-1269;0.2;3-5;-;-;-
+DEV;read-book;http://forcoder.ru/c-sharp/c-dlya-professionalov-tonkosti-programmirovaniya-1238;0.2;3-5;-;-;-
+DEV;read-book;http://www.ozon.ru/context/detail/id/19916784/;0.2;3-5;-;-;-
+DEV;read-book;http://scanlibs.com/linq-yazyik-integrirovannyih-zaprosov-v-c-2010-dlya-professionalov/;0.2;3-5;-;-;-
+DEV;read-book;http://rutracker.org/forum/viewtopic.php?t=4892505;0.2;3-5;-;-;-
+DEV;read-book;http://rutracker.org/forum/viewtopic.php?t=4181417;0.2;3-5;-;-;-
+DEV;read-book;http://www.e-reading.club/book.php?book=134447;0.2;3-5;-;-;-
+EDU;read-book;хватит быть славным парнем;0.2;3-5;-;-;-
+EDU;read-book;Верховный алгоритм. Педро;0.2;3-5;-;-;-
+EDU;read-book;Оливер Сакс - Человек, который принял свою жену за шляпу;0.2;3-5;-;-;-
+EDU;read-book;Naked Statistics. Stripping the Dread from the Data / Голая статистика. Самая интересная книга о самой скучной науке;0.2;3-5;-;-;-
+EDU;read-book;Naked Economics. Undressing the Dismal Science (Fully Revised and Updated) / Голая экономика. Разоблачение унылой науки;0.2;3-5;-;-;-
+EDU;read-book;Naked Money. A Revealing Look at Our Financial System / Голые деньги. Откровенная книга о финансовой системе;0.2;3-5;-;-;-
+EDU;read-book;Сингапурская история. Из «третьего мира» – в первый;0.2;3-5;-;-;-
+EDU;read-book;о дивный новый мир;0.2;3-5;-;-;-
+EDU;read-book;туманность андромеды;0.2;3-5;-;-;-
+EDU;read-book;час быка;0.2;3-5;-;-;-
+EDU;read-book;эдем;0.2;3-5;-;-;-
+EDU;read-book;Book. Книга Пособие для иллюстратора;0.2;3-5;-;-;-
+EDU;read-book;Book. Cracking the coding interview;0.2;1;-;-;-
+EDU;music-theory;Find some book;0.2;1;-;-;-

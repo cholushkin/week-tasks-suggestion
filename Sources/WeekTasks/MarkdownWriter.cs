@@ -1,5 +1,3 @@
-using System;
-using System.IO;
 using System.Text;
 using WeekTasks.Utils.Random;
 
@@ -37,6 +35,7 @@ namespace WeekTasks
                 var message = RandomHelper.Rnd.FromList(_messageOfTheDay.MessageOfTheDayStrings);
                 
                 // Append the day header with the formatted date
+                markdownBuilder.AppendLine("---");
                 markdownBuilder.AppendLine($"### Day {dayIndex + 1}. {formattedDate}");
                 markdownBuilder.AppendLine();
                 markdownBuilder.AppendLine("> [!TIP]");
@@ -71,6 +70,7 @@ namespace WeekTasks
                 markdownBuilder.AppendLine();
             }
             
+            markdownBuilder.AppendLine("---");
             markdownBuilder.AppendLine("## Week review");
             markdownBuilder.AppendLine("- I followed my plan throughout the week");
             markdownBuilder.AppendLine("- AI summarize");

@@ -1,0 +1,9 @@
+task-type;task-id;task-description;pickup-priority;days;prefs;remarks;prompt
+TODO;buy-vr-set;Choose and buy;0.1;1;-;-;google:best VR set for PC
+TODO;buy-drone-set;Choose remote controller first, investigate drones market;0.1;1;-;-;-
+TODO;buy-AV-reciver;;0.1;1;-;-;-
+TODO;buy-speakers-for-tv;Speakers for tv and music;0.1;1;-;-;-
+TODO;buy-folder;folder for papers, use for printed cheat sheets and some reusable papers;0.1;1;-;-;-
+TODO;buy-DRL;DRL drone simulator, it's only 8 euros;0.2;1;-;https://store.epicgames.com/en-US/p/the-drone-racing-league-simulator;-
+TODO;buy-mirror;mirror for cabinet, measure aspects, 3 pieces;0.1;1;-;-;-
+TODO;buy-printer-ink;Choose online;0.1;1;-;-;-

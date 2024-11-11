@@ -1,0 +1,8 @@
+task-type;task-id;task-description;pickup-priority;days;prefs;remarks;prompt
+TODO;motepad-plus-plus-plugins-investigation;csv/xml/json/lua. Investigate other plugins;0.1;1;-;-;google:plugin for notepad++
+TODO;install-linux;Install linux on laptop, choose distributive;0.1;1;-;-;google:What is a good linux distributive for a programmer
+TODO;artist-style-investigation;Cheat sheet artists styles, test with Stable Diffuesion;0.1;1;-;https://ckovalev.com/midjourney-ai/weekly/nov-26 https://mpost.io/midjourney-and-dall-e-artist-styles-dump-with-examples-130-famous-ai-painting-techniques/;-
+TODO;virtual-machine;learn about virtual machine, setup one on notebook, experimenting with setup of different stuff;0.2;1-2;-;-;ai:What are good good virtual machine for linux?
+TODO;omv-cleaing;Clean, organize;0.2;1;-;-;-
+TODO;omv-music-streaming;Setup music streaming for OMV;0.2;1;-;-;-
+TODO;obsisidian-work;Review notes, review tasks;0.2;1;-;-;-

@@ -73,12 +73,12 @@ namespace WeekTasks
                     {
                         TaskType = columns[0],
                         TaskID = columns[1], // Use TaskID instead of Task
-                        Description = columns[2],
+                        Description = ProcessStringValue(columns[2]),
                         PickUpPriority = double.TryParse(columns[3], out double priority) ? priority : 0.0,
                         Days = ParseDays(columns[4]),
-                        Prefs = columns[5],
-                        Remarks = columns[6],
-                        Prompt = columns[7]
+                        Prefs = ProcessStringValue(columns[5]),
+                        Remarks = ProcessStringValue(columns[6]),
+                        Prompt = ProcessStringValue(columns[7])
                     };
 
                     taskList.Add(taskEntry); // Add the task entry to the provided list
@@ -88,6 +88,16 @@ namespace WeekTasks
             {
                 Console.WriteLine($"Error reading file {filePath}: {ex.Message}");
             }
+        }
+
+        private static string ProcessStringValue(string strValue)
+        {
+            if (string.IsNullOrEmpty(strValue))
+                return "";
+            strValue = strValue.Trim();
+            if (strValue == "-")
+                strValue = "";
+            return strValue;
         }
 
         private static (int from, int to) ParseDays(string days)

@@ -1,0 +1,14 @@
+task-type;task-id;task-description;pickup-priority;days;prefs;remarks;prompt
+EDU;article-sound-physics;Find and read article about physics of sound;0.1;1;-;What are physics aspects of sound?
+EDU;architecture-book-choose; Choose one book about architecture and upload it to Surface. Add it to #edu books.csv;0.1;1;-;What are good architecture books? 
+EDU;generic-python-book;Python book.Find modern Python programming book + some specific, AI programming(pytorch);0.2;1;-;-
+EDU;github-code-reading;Choose some repository and spend at least 1hr of exploring the code;0.5;3-7;-;What is good code or project repository i can investigate for a self education?
+EDU;software-rendering-tutorial; https://github.com/ssloy/tinyrenderer/wiki/Lesson-0:-getting-started ;0.2;3;-;Good for understanding how rendering works in general;
+EDU;chat-gpt-quiz;Ask for a quiz for a different topic: geographi, programming, gamedev, history, etc.;0.2;5;;
+EDU;anki-geography;Geography. Europe, Canda, USA, UK, Australia, Asia, quiz;0.2;1;-;-;-
+EDU;History;;0.2;1;-;-;-
+EDU;Math / Geometry;;0.2;1;-;-;-
+EDU;Computational geometry;;0.2;1;-;-;-
+EDU;bitwig-grid;grid tutorial and practicing;0.2;1;-;-;-
+EDU;Book. Economics;;0.2;1;-;-;-
+EDU;Бронзовый век, Железный век;;0.2;1;-;-;-

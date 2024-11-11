@@ -1,0 +1,11 @@
+task-type;task-id;task-description;pickup-priority;days;prefs;remarks;prompt
+PRJ;prj-chillaxer;Chillaxer project.;0.2;2;-;-;-
+PRJ;prj-quantra;Quantra ascendra project.;0.2;5-7;FOCUS;-;-
+PRJ;prj-smart-particles;Smart particles project.;0.2;2-3;-;-;-
+PRJ;prj-week-suggestion;Week suggestion project.;0.2;2-3;-;-;-
+PRJ;prj-cheat-sheets;Cheat sheets project.;0.2;2-3;-;-;-
+PRJ;prj-aga;Alice geometric adventure game project.;0.2;2-3;-;-;-
+PRJ;prj-tower-generator;Tower generator lib project.;0.2;2-3;-;-;-
+PRJ;prj-version-history;Version history lib + smart commit message.;0.2;2-3;-;-;-
+PRJ;prj-gamelib;Gamelib, debug and other modules;0.2;2-3;-;-;-
+PRJ;prj-uconsole;uconsole;0.2;2-3;-;-;-

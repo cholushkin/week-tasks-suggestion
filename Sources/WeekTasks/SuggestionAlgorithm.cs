@@ -39,10 +39,7 @@ namespace WeekTasks
 
         public async Task ProcessPrompt()
         {
-            // google:
-            // ai:
-            // empty: nullOrEmpty or "-"
-            // error:
+
             
             // // Instantiate the OpenAIHelper with your API key
             // IArtificialIntelligence AIBridge = new LocalAI();

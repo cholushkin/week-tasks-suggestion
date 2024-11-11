@@ -1,0 +1,45 @@
+task-type;task-id;task-description;pickup-priority;days;prefs;remarks;prompt
+DEV;learn-llvm;Learn about LLVM;0.2;1-2;-;-;ai:Tell me about LLVM briefly
+DEV;c-sharp-structs;Learn about C# struct vs classes vs records vs record structs;0.1;1-2;-;-;ai:Tell me about C# struct vs classes (also records, record structs and so on)
+DEV;investigate-c-sharp-versions;Learn about history of c# versions;0.1;1-3;-;-;google:wiki c sharp
+DEV;data-driven-approach;Data driven programming;0.3;2-4;-;-;ai:tell me about data driven appoach in programming
+DEV;find-book;Find book for algorythms pdf and upload to Surface;0.2;1;-;-;ai:give me advice on good algorithms book to read
+DEV;search-algorithms;General review of search algorithms, find book, upload to Surface;0.5;1;-;-;ai:What are popular searching algorithms and books about searching algorithms
+DEV;learn-design-pattern-service-locator;Learn service locator design pattern.;0.1;2-4;-;https://en.wikipedia.org/wiki/Service_locator_pattern;ai:What is service allocator design pattern?
+DEV;multithreading;Multithreading programming in general, semaphore, mutex, other primitives overview;0.5;2-4;-;-;ai:What is multithreading programming in general?
+DEV;multithreadin-and-async;Investigate difference and similarities;0.2;2-4;-;-;ai:What is async programming?
+DEV;investigate-cpp-casts;C++. Different types of casts, reinterpret_cast and others;0.2;2-3;-;-;ai:What are different types of casts in c++?
+DEV;investigate-dependency-injection;C#. Dependency injection, vcontainer lib in general;0.4;3-6;-;-;ai:What is dependancy injection?
+DEV;c-sharp-pattern-matching;Example: if (items is { Count: > 0 });0.4;1-3;-;-;ai:What is pattern matching in C#?
+DEV;cpp-classes-vs-structs;C++: classes vs structs details;0.3;1-2;-;-;ai:What are main differences between structs and classes in c++?
+DEV;shaders-in-general;Shader programming review;0.2;1-2;-;-;google:Shaders programming
+DEV;investigate-computational-shaders;Computational shaders programming in Unreal, Unity, C++;0.3;2-4;-;-;ai:What are computational shaders in general? What are them in Unity?
+DEV;c-shart-async;C#: Using async/await and asynchronous programming in general;0.4;3-5;-;-;google:async/await and asynchronous programming
+DEV;unity-addressables;Unity Addressables investiagtion;0.4;3-5;-;-;google:Adressables in Unity
+DEV;regexp-study;Regexp in general, is still actual, what are the alternatives;0.1;2-3;-;-;ai:Regexp in general, is still actual, what are the alternatives?
+DEV;xpath-study;xpath in general, is still actual, what are the alternatives;0.1;2-3;-;-;ai:xpath in general, is still actual, what are the alternatives?
+DEV;jsonpath-study;jsonpath in general, is still actual, what are the alternatives;0.1;2-3;-;-;ai:jsonpath in general, is still actual, what are the alternatives?
+DEV;xml-scheme-study;xml scheme in general, is still actual, what are the alternatives;0.1;2-3;-;-;ai:what is xml scheme in general, is still actual, what are the alternatives?
+DEV;override-keyword;Using override keyword in c++ and c#, differences;0.2;2-4;-;-;ai:Tell me about override keyword in C++ and C#
+DEV;c-sharp-generics;C# generics programming, find separate book/tutorial;0.3;5-7;-;-;ai:Book suggestion for generics programming in C#?
+DEV;experiment-with-asset;Unity asset. Try https://assetstore.unity.com/packages/tools/camera/adaptive-split-screen-223436 create experiment prj;0.1;2-3;-;-;-
+DEV;unity-visual-scripting;Investigate Unity visual scripting approaches;0.1;2-3;-;https://unity.com/features/unity-visual-scripting;ai:What are benefits of visual programming?
+DEV;dot-net;.NET Framework vs .NET Core vs .NET vs .NET Standard vs C# versions;0.2;2-3;-;-;ai:.NET Framework vs .NET Core vs .NET vs .NET Standard vs C# versions
+DEV;genetics-algorithms-investigation;Genetics algorithms in general;0.1;2-3;-;-;ai:What are genetics algorithms in general?
+DEV;ecs-investigation;ECS in general, Unreal, C++, Unity;0.1;3-5;-;-;What is ECS in general, libraries, benefits. c++ and c#
+DEV;unity-unitask;UniTask in general, experiment project;0.1;3-5;-;Take examples from Redlynx;ai:What is UniTask library?
+DEV;unirx;UniRX in general, experiment project;0.1;3-5;-;take examples from Redlynx;google:UniTask library
+DEV;lambda-study;Lambdas in C# and C++;0.2;4-5;-;-;google:Labda in C++ and C#?
+DEV;unity-model-view-controller;MVC for Unity. Check Redlynx implementation for example;0.1;3-5;-;-;What are variations of MVC design pattern?
+DEV;blender-geometry-nodes;Study Blender geometry nodes, tutorial, test projects;0.2;1;-;-;google:Blender geometry nodes
+DEV;blender-sculpting;Blender sculpting;0.2;1;-;-;-
+DEV;big-o-notation;Investigate, find book;0.2;1;-;-;-
+DEV;design-patterns;Investigate one of them using book;0.6;1;-;-;-
+DEV;cpp-templates;Book. C++ Templates. The complete guide. Second edition. Also look the youtube lessons;0.2;1;-;-;-
+DEV;linq-study;LINQ: some tutorial;0.2;1;-;-;-
+DEV;git;git/git flow/tutorial;0.2;1;-;-;ai:git flow
+DEV;investigate-codebases;Code investigating in github;0.4;1;-;-;-
+DEV;houdini-investigation;Houdini investigation, tutorials;0.2;1;-;-;-
+DEV;exploring-art;Просмотр работ художников / Sketchfab. Просмотр моделей и изучение анатомии ;0.2;1;-;[[Artists of Russian reality]];-
+DEV;db-study;Data bases architecture;0.2;1;-;-;-
+DEV;unreal-engine;Learn Unreal engine;0.2;1;-;-;-

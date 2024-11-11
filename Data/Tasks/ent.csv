@@ -1,0 +1,4 @@
+task-type;task-id;task-description;pickup-priority;days;prefs;remarks;prompt
+ENT;listen-audio-book;Sci-fi, criminal, fun;0.2;1;-;-;-
+ENT;watch-video;Watch something from your subscribtion;0.2;1-3;-;-;-
+ENT;listen-music;Investigate bands and genres (sudo explore);0.2;1-3;-;-;-

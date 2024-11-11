@@ -74,7 +74,7 @@ namespace WeekTasks
             await suggestionAlgorithm.ProcessPrompt(); 
             suggestionAlgorithm.PrintWeekDistribution();
 
-            if (!string.IsNullOrEmpty(Settings["obsidian-vault-dir"]))
+            if (Settings["obsidian-vault-dir"] != null)
             {
                 var motd = MessageOfTheDay.LoadFromTextFile(Settings["motd"]);
                 DateTime startDate = DateTime.Parse(Settings["start-date"]);

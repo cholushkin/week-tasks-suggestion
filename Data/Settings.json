@@ -2,7 +2,8 @@
     "tasks-dir": "Data/Tasks",    
     "motd": "Data/MessageOfTheDay.txt",
     "output-dir": "Output",
-    "obsidian-vault-dir": "d:/obsidian/VAULT",
+    "~obsidian-vault-dir": "d:/obsidian/VAULT",
+    "obsidian-vault-dir": "",
     "task-types": "Data/TaskTypes.json",
     "log-level": "verbose"
 }

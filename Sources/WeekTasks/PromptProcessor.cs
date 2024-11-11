@@ -2,10 +2,13 @@
 
 namespace WeekTasks
 {
-    public class GoogleSearchPromptMaker
+    public class PromptProcessor
     {
         // [Search for OpenAI ChatGPT](https://www.google.com/search?q=OpenAI+ChatGPT)
-
+        // google: 
+        // ai:
+        // empty: nullOrEmpty or "-"
+        // error:
     
     }
     
