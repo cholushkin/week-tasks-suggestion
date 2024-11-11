@@ -1,4 +1,3 @@
-
 using System.Net.Http.Json;
 using System.Text.Json;
 
@@ -14,17 +13,27 @@ namespace WeekTasks
     {
         private readonly HttpClient _httpClient;
         private static readonly string apiBaseUrl = "http://127.0.0.1:5000/v1/chat/completions";
+        private bool _connectionProblem = false;
+        private string _lastErrorMessage;
 
         public LocalAI()
         {
-            _httpClient = new HttpClient();
+            _httpClient = new HttpClient
+            {
+                Timeout = TimeSpan.FromSeconds(3) // todo: pass from ctor
+            };
         }
-        
+
         public async Task<string> GetResponseFromAIAsync(string prompt)
         {
-            prompt = $"{prompt}. Make short response in a continuous and short block of text";
-            
-            // Define the request body for ChatCompletion API
+            prompt = $"{prompt}. Make a short response in a continuous and short block of text";
+
+            if (_connectionProblem)
+            {
+                return "[[howto-setup-ai]]";
+            }
+
+            // Define the request body for the ChatCompletion API
             var request = new
             {
                 messages = new[]
@@ -33,40 +42,41 @@ namespace WeekTasks
                 },
                 max_tokens = 150 // Adjust as needed
             };
-
-            int maxRetries = 5;
-
-            for (int attempt = 0; attempt < maxRetries; attempt++)
+            
+            try
             {
-                try
+                // Send the request
+                var response = await _httpClient.PostAsJsonAsync(apiBaseUrl, request);
+                if (response.IsSuccessStatusCode)
                 {
-                    var response = await _httpClient.PostAsJsonAsync(apiBaseUrl, request);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var jsonResponse = await response.Content.ReadFromJsonAsync<JsonElement>();
-                        return jsonResponse.GetProperty("choices")[0].GetProperty("message").GetProperty("content").GetString();
-                    }
-                    else if ((int)response.StatusCode == 429) // Too Many Requests
-                    {
-                        // Retry logic if needed
-                        Console.WriteLine("Rate limit hit, retrying after delay...");
-                        await Task.Delay(1000);
-                    }
-                    else
-                    {
-                        return $"Error: {response.StatusCode} - {response.ReasonPhrase}";
-                    }
+                    var jsonResponse = await response.Content.ReadFromJsonAsync<JsonElement>();
+                    return jsonResponse.GetProperty("choices")[0].GetProperty("message").GetProperty("content")
+                        .GetString();
                 }
-                catch (Exception ex)
+                else
                 {
-                    return $"Exception: {ex.Message}";
+                    _connectionProblem = true;
+                    _lastErrorMessage = $"Error: {response.StatusCode} - {response.ReasonPhrase}"; 
+                    Console.WriteLine(_lastErrorMessage);
+                    return "[[howto-setup-ai]]";
                 }
             }
-
-            return "Failed to get a response after multiple attempts.";
+            catch (TaskCanceledException ex) when (ex.InnerException is TimeoutException)
+            {
+                _connectionProblem = true;
+                _lastErrorMessage = $"Error: {ex.ToString()}";
+                return "[[howto-setup-ai]]";
+            }
+            catch (Exception ex)
+            {
+                _connectionProblem = true;
+                _lastErrorMessage = $"Error: {ex.ToString()}";
+                return "[[howto-setup-ai]]";
+            }
         }
     }
-    
+
+
     public class OpenAIHelper : IArtificialIntelligence
     {
         private readonly HttpClient _httpClient;
@@ -108,12 +118,14 @@ namespace WeekTasks
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonResponse = await response.Content.ReadFromJsonAsync<JsonElement>();
-                    return jsonResponse.GetProperty("choices")[0].GetProperty("message").GetProperty("content").GetString();
+                    return jsonResponse.GetProperty("choices")[0].GetProperty("message").GetProperty("content")
+                        .GetString();
                 }
                 else
                 {
                     var errorResponse = await response.Content.ReadAsStringAsync();
-                    throw new Exception($"API request failed with status code {response.StatusCode}: {response.ReasonPhrase}. Response: {errorResponse}");
+                    throw new Exception(
+                        $"API request failed with status code {response.StatusCode}: {response.ReasonPhrase}. Response: {errorResponse}");
                 }
             }
             catch (Exception ex)
@@ -122,6 +134,5 @@ namespace WeekTasks
                 throw new Exception("Error occurred while calling OpenAI API. Details: " + ex.Message, ex);
             }
         }
-
     }
 }

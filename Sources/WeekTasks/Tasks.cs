@@ -25,7 +25,7 @@ namespace WeekTasks
             public string Prefs;
             public string Remarks;
             public string Prompt;
-            public string AIResponce;
+            public string PromptResult;
 
             public bool HasPreference(Pref pref)
             {

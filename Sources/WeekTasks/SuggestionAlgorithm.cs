@@ -39,29 +39,26 @@ namespace WeekTasks
 
         public async Task ProcessPrompt()
         {
-
+            // Filter tasks with a non-empty Prompt, accounting for potential null values in task.Task
+            var tasksSlots = _weekDistribution.Week
+                .SelectMany(day => day.Tasks) // Assuming each day has a collection of tasks
+                .Where(task => task.Task != null && !string.IsNullOrWhiteSpace(task.Task.Prompt))
+                .ToList();
             
-            // // Instantiate the OpenAIHelper with your API key
-            // IArtificialIntelligence AIBridge = new LocalAI();
-            //
-            // // Filter tasks with a non-empty Prompt
-            // var tasksWithPrompts = _taskList
-            //     .Where(task => !string.IsNullOrWhiteSpace(task.Prompt) && task.Prompt.Length >= 3).ToList();
-            //
-            // foreach (var task in tasksWithPrompts)
-            // {
-            //     try
-            //     {
-            //         // Get AI response for each task's Prompt
-            //         Console.WriteLine($"prompting: {task.Prompt}");
-            //         var response = await AIBridge.GetResponseFromAIAsync(task.Prompt);
-            //         task.AIResponce = response; // Set the AI response to the task's AIResponce property
-            //     }
-            //     catch (Exception ex)
-            //     {
-            //         Console.WriteLine($"Error processing task {task.TaskID}: {ex.Message}");
-            //     }
-            // }
+            var promptProcessor = new PromptProcessor();
+            foreach (var taskSlot in tasksSlots)
+            {
+                Console.Write($"Processing prompt: {taskSlot.Task.Prompt}...");
+                try
+                {
+                    taskSlot.Task.PromptResult = await promptProcessor.Process(taskSlot.Task.Prompt);
+                }
+                catch (Exception ex)
+                {
+                    Console.Write($"Error processing task prompt {taskSlot.Task.TaskID}: {ex.Message}");
+                }
+                Console.WriteLine("Done");
+            }
         }
         
         

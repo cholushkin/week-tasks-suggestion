@@ -1,78 +1,78 @@
 task-type;task-id;task-description;pickup-priority;days;prefs;remarks;prompt
 ENT;play-game;Trine series, local coop, install and put in folder local multiplayer;0.1;1-3;WEEK_END;genre:puzzle-action|2d-platformer|local-multiplayer;google:trine
-ENT;play-game;Antichamber;0.1;1-3;WEEK_END;genre:puzzle-adventure|shooter;google-img: Antichamber game screenshots
-ENT;play-game;Axiom verge 1/2;0.1;1-3;WEEK_END;genre:metroidwania;google-img:"Axiom verge" game screenshots
-ENT;play-game;baba is you;0.1;1-3;WEEK_END;genre:puzzle;google-img:"baba is you" game screenshots
-ENT;play-game;baldurs gate 3;0.1;1-3;WEEK_END;genre:rpg;google-img:"baldurs gate 3" game screenshots
-ENT;play-game;bayonetta 1/2/3;0.1;1-3;WEEK_END;genre:action|fighting;google-img:"bayonetta 1/2/3" game screenshots
-ENT;play-game;Blasphemous 1/2;0.1;1-3;WEEK_END;genre:metroidwania;google-img:"Blasphemous 1/2" game screenshots
-ENT;play-game;the last of us;0.1;1-3;WEEK_END;-;google-img:"the last of us" game screenshots, google:"the last of us" game
-ENT;play-game;zelda series;0.1;1-3;WEEK_END;-;google-img:"zelda series" game screenshots, google:"zelda series" game
-ENT;play-game;elden ring;0.1;1-3;WEEK_END;-;google-img:"elden ring" game screenshots, google:"elden ring" game
-ENT;play-game;Blazing Chrome Doyle;0.1;1-3;WEEK_END;-;google-img:"Blazing Chrome Doyle" game screenshots, google:"Blazing Chrome Doyle" game
-ENT;play-game;Cosmoteer: Starship Architect & Commander;0.1;1-3;WEEK_END;-;google-img:"Cosmoteer: Starship Architect & Commander" game screenshots, google:"Cosmoteer: Starship Architect & Commander" game
-ENT;play-game;Cursed to golf;0.1;1-3;WEEK_END;-;google-img:"Cursed to golf" game screenshots, google:"Cursed to golf" game
-ENT;play-game;Cybershadow;0.1;1-3;WEEK_END;-;google-img:"Cybershadow" game screenshots, google:"Cybershadow" game
-ENT;play-game;Dandara;0.1;1-3;WEEK_END;-;google-img:"Dandara" game screenshots, google:"Dandara" game
-ENT;play-game;divinity original sin 2;0.1;1-3;WEEK_END;-;google-img:"divinity original sin 2" game screenshots, google:"divinity original sin 2" game
-ENT;play-game;Dungeon Warfare;0.1;1-3;WEEK_END;-;google-img:"Dungeon Warfare" game screenshots, google:"Dungeon Warfare" game
-ENT;play-game;Escape goat 1/2;0.1;1-3;WEEK_END;-;google-img:"Escape goat 1/2" game screenshots, google:"Escape goat 1/2" game
-ENT;play-game;Flynn: Son of Crimson;0.1;1-3;WEEK_END;-;google-img:"Flynn: Son of Crimson" game screenshots, google:"Flynn: Son of Crimson" game
-ENT;play-game;gonner 2;0.1;1-3;WEEK_END;-;google-img:"gonner 2" game screenshots, google:"gonner 2" game
-ENT;play-game;Grim down;0.1;1-3;WEEK_END;-;google-img:"Grim down" game screenshots, google:"Grim down" game
-ENT;play-game;guacamelee 1/2;0.1;1-3;WEEK_END;-;google-img:"guacamelee 1/2" game screenshots, google:"guacamelee 1/2" game
-ENT;play-game;Heavenly Bodies;0.1;1-3;WEEK_END;-;google-img:"Heavenly Bodies" game screenshots, google:"Heavenly Bodies" game
-ENT;play-game;i have no mouth but i have scream;0.1;1-3;WEEK_END;-;google-img:"i have no mouth but i have scream" game screenshots, google:"i have no mouth but i have scream" game
-ENT;play-game;Infested Planet;0.1;1-3;WEEK_END;-;google-img:"Infested Planet" game screenshots, google:"Infested Planet" game
-ENT;play-game;Iron Marines Invasion;0.1;1-3;WEEK_END;-;google-img:"Iron Marines Invasion" game screenshots, google:"Iron Marines Invasion" game
-ENT;play-game;it takes two;0.1;1-3;WEEK_END;-;google-img:"it takes two" game screenshots, google:"it takes two" game
-ENT;play-game;Just Shapes & Beats;0.1;1-3;WEEK_END;-;google-img:"Just Shapes & Beats" game screenshots, google:"Just Shapes & Beats" game
-ENT;play-game;Hi-Fi Rush;0.1;1-3;WEEK_END;-;google-img:"Hi-Fi Rush" game screenshots, google:"Hi-Fi Rush" game
-ENT;play-game;Lair of the clockwork god;0.1;1-3;WEEK_END;-;google-img:"Lair of the clockwork god" game screenshots, google:"Lair of the clockwork god" game
-ENT;play-game;loop hero;0.1;1-3;WEEK_END;-;google-img:"loop hero" game screenshots, google:"loop hero" game
-ENT;play-game;mighty goose;0.1;1-3;WEEK_END;-;google-img:"mighty goose" game screenshots, google:"mighty goose" game
-ENT;play-game;Olija;0.1;1-3;WEEK_END;-;google-img:"Olija" game screenshots, google:"Olija" game
-ENT;play-game;Overlord 2;0.1;1-3;WEEK_END;-;google-img:"Overlord 2" game screenshots, google:"Overlord 2" game
-ENT;play-game;Pixel junk shooter;0.1;1-3;WEEK_END;-;google-img:"Pixel junk shooter" game screenshots, google:"Pixel junk shooter" game
-ENT;play-game;Psychonauts 2;0.1;1-3;WEEK_END;-;google-img:"Psychonauts 2" game screenshots, google:"Psychonauts 2" game
-ENT;play-game;Rain World;0.1;1-3;WEEK_END;-;google-img:"Rain World" game screenshots, google:"Rain World" game
-ENT;play-game;risk of rain returns;0.1;1-3;WEEK_END;-;google-img:"risk of rain returns" game screenshots, google:"risk of rain returns" game
-ENT;play-game;Risk of rain 2;0.1;1-3;WEEK_END;-;google-img:"Risk of rain 2" game screenshots, google:"Risk of rain 2" game
-ENT;play-game;Sackboy: A Big Adventure;0.1;1-3;WEEK_END;-;google-img:"Sackboy: A Big Adventure" game screenshots, google:"Sackboy: A Big Adventure" game
-ENT;play-game;Sayonara Wild Hearts;0.1;1-3;WEEK_END;-;google-img:"Sayonara Wild Hearts" game screenshots, google:"Sayonara Wild Hearts" game
-ENT;play-game;Shovel Knight Dig;0.1;1-3;WEEK_END;-;google-img:"Shovel Knight Dig" game screenshots, google:"Shovel Knight Dig" game
-ENT;play-game;Skul: The Hero Slayer;0.1;1-3;WEEK_END;-;google-img:"Skul: The Hero Slayer" game screenshots, google:"Skul: The Hero Slayer" game
-ENT;play-game;solar ash;0.1;1-3;WEEK_END;-;google-img:"solar ash" game screenshots, google:"solar ash" game
-ENT;play-game;Spelunky 2;0.1;1-3;WEEK_END;-;google-img:"Spelunky 2" game screenshots, google:"Spelunky 2" game
-ENT;play-game;steel assault;0.1;1-3;WEEK_END;-;google-img:"steel assault" game screenshots, google:"steel assault" game
-ENT;play-game;street of rage 4;0.1;1-3;WEEK_END;-;google-img:"street of rage 4" game screenshots, google:"street of rage 4" game
-ENT;play-game;Superflight;0.1;1-3;WEEK_END;-;google-img:"Superflight" game screenshots, google:"Superflight" game
-ENT;play-game;The Riftbreaker;0.1;1-3;WEEK_END;-;google-img:"The Riftbreaker" game screenshots, google:"The Riftbreaker" game
-ENT;play-game;Transistor;0.1;1-3;WEEK_END;-;google-img:"Transistor" game screenshots, google:"Transistor" game
-ENT;play-game;Umihara Kawase Shun;0.1;1-3;WEEK_END;-;google-img:"Umihara Kawase Shun" game screenshots, google:"Umihara Kawase Shun" game
-ENT;play-game;Unsighted;0.1;1-3;WEEK_END;-;google-img:"Unsighted" game screenshots, google:"Unsighted" game
-ENT;play-game;prototype 2;0.1;1-3;WEEK_END;-;google-img:"prototype 2" game screenshots, google:"prototype 2" game
-ENT;play-game;disco elysium;0.1;1-3;WEEK_END;-;google-img:"disco elysium" game screenshots, google:"disco elysium" game
-ENT;play-game;GATO ROBOTO;0.1;1-3;WEEK_END;-;google-img:"GATO ROBOTO" game screenshots, google:"GATO ROBOTO" game
-ENT;play-game;COCOON;0.1;1-3;WEEK_END;-;google-img:"COCOON" game screenshots, google:"COCOON" game
-ENT;play-game;lovely planet;0.1;1-3;WEEK_END;-;google-img:"lovely planet" game screenshots, google:"lovely planet" game
-ENT;play-game;lovely planet remix;0.1;1-3;WEEK_END;-;google-img:"lovely planet remix" game screenshots, google:"lovely planet remix" game
-ENT;play-game;chuchu rocket;0.1;1-3;WEEK_END;-;google-img:"chuchu rocket" game screenshots, google:"chuchu rocket" game
-ENT;play-game;Handsome Mr. Frog;0.1;1-3;WEEK_END;-;google-img:"Handsome Mr. Frog" game screenshots, google:"Handsome Mr. Frog" game
-ENT;play-game;1001 spikes;0.1;1-3;WEEK_END;-;google-img:"1001 spikes" game screenshots, google:"1001 spikes" game
-ENT;play-game;Pepper Grinder;0.1;1-3;WEEK_END;-;google-img:"Pepper Grinder" game screenshots, google:"Pepper Grinder" game
-ENT;play-game;outlast 1/2;0.1;1-3;WEEK_END;-;google-img:"outlast 1/2" game screenshots, google:"outlast 1/2" game
-ENT;play-game;pinkman;0.1;1-3;WEEK_END;-;google-img:"pinkman" game screenshots, google:"pinkman" game
-ENT;play-game;Catie in MeowmeowLand;0.1;1-3;WEEK_END;-;google-img:"Catie in MeowmeowLand" game screenshots, google:"Catie in MeowmeowLand" game
-ENT;play-game;OTXO;0.1;1-3;WEEK_END;-;google-img:"OTXO" game screenshots, google:"OTXO" game
-ENT;play-game;Disc Room;0.1;1-3;WEEK_END;-;google-img:"Disc Room" game screenshots, google:"Disc Room" game
-ENT;play-game;Rifter;0.1;1-3;WEEK_END;-;google-img:"Rifter" game screenshots, google:"Rifter" game
-ENT;play-game;Spirits Abyss;0.1;1-3;WEEK_END;-;google-img:"Spirits Abyss" game screenshots, google:"Spirits Abyss" game
-ENT;play-game;Boneraiser Minions;0.1;1-3;WEEK_END;-;google-img:"Boneraiser Minions" game screenshots, google:"Boneraiser Minions" game
-ENT;play-game;The Multi-Medium;0.1;1-3;WEEK_END;-;google-img:"The Multi-Medium" game screenshots, google:"The Multi-Medium" game
-ENT;play-game;Lowglow;0.1;1-3;WEEK_END;-;google-img:"Lowglow" game screenshots, google:"Lowglow" game
-ENT;play-game;Hohokum;0.1;1-3;WEEK_END;-;google-img:"Hohokum" game screenshots, google:"Hohokum" game
-ENT;play-game;Mosa Lina;0.1;1-3;WEEK_END;-;google-img:"Mosa Lina" game screenshots, google:"Mosa Lina" game
-ENT;play-game;max payne 3;0.1;1-3;WEEK_END;-;google-img:"max payne 3" game screenshots, google:"max payne 3" game
-ENT;play-game;Nine Sols;0.1;1-3;WEEK_END;-;google-img:"Nine Sols" game screenshots, google:"Nine Sols" game
-ENT;play-game;Super Fantasy Kingdom;0.1;1-3;WEEK_END;-;-
+ENT;play-game;Antichamber;0.1;1-3;WEEK_END;genre:puzzle-adventure|shooter;google: Antichamber game
+ENT;play-game;Axiom verge 1/2;0.1;1-3;WEEK_END;genre:metroidwania;google:"Axiom verge" game
+ENT;play-game;baba is you;0.1;1-3;WEEK_END;genre:puzzle;google:"baba is you" game
+ENT;play-game;baldurs gate 3;0.1;1-3;WEEK_END;genre:rpg;google:"baldurs gate 3" game
+ENT;play-game;bayonetta 1/2/3;0.1;1-3;WEEK_END;genre:action|fighting;google:"bayonetta 1/2/3"
+ENT;play-game;Blasphemous 1/2;0.1;1-3;WEEK_END;genre:metroidwania;google:"Blasphemous 1/2" game
+ENT;play-game;the last of us;0.1;1-3;WEEK_END;-;google:"the last of us 1/2" game
+ENT;play-game;zelda series;0.1;1-3;WEEK_END;-;google:"zelda series" game
+ENT;play-game;elden ring;0.1;1-3;WEEK_END;-;google:"elden ring" game
+ENT;play-game;Blazing Chrome Doyle;0.1;1-3;WEEK_END;-;google:"Blazing Chrome Doyle" game
+ENT;play-game;Cosmoteer: Starship Architect & Commander;0.1;1-3;WEEK_END;-;google:"Cosmoteer: Starship Architect & Commander" game
+ENT;play-game;Cursed to golf;0.1;1-3;WEEK_END;-;google:"Cursed to golf" game
+ENT;play-game;Cybershadow;0.1;1-3;WEEK_END;-;google:"Cybershadow" game
+ENT;play-game;Dandara;0.1;1-3;WEEK_END;-;google:"Dandara" game
+ENT;play-game;divinity original sin 2;0.1;1-3;WEEK_END;-;google:"divinity original sin 2" game
+ENT;play-game;Dungeon Warfare;0.1;1-3;WEEK_END;-;google:"Dungeon Warfare" game
+ENT;play-game;Escape goat 1/2;0.1;1-3;WEEK_END;-;google:"Escape goat 1/2" game
+ENT;play-game;Flynn: Son of Crimson;0.1;1-3;WEEK_END;-;google:"Flynn: Son of Crimson" game
+ENT;play-game;gonner 2;0.1;1-3;WEEK_END;-;google:"gonner 2" game
+ENT;play-game;Grim down;0.1;1-3;WEEK_END;-;google:"Grim down" game
+ENT;play-game;guacamelee 1/2;0.1;1-3;WEEK_END;-;google:"guacamelee 1/2" game
+ENT;play-game;Heavenly Bodies;0.1;1-3;WEEK_END;-;google:"Heavenly Bodies" game
+ENT;play-game;i have no mouth but i have scream;0.1;1-3;WEEK_END;-;google:"i have no mouth but i have scream" game
+ENT;play-game;Infested Planet;0.1;1-3;WEEK_END;-;google:"Infested Planet" game
+ENT;play-game;Iron Marines Invasion;0.1;1-3;WEEK_END;-;google:"Iron Marines Invasion" game
+ENT;play-game;it takes two;0.1;1-3;WEEK_END;-;google:"it takes two" game
+ENT;play-game;Just Shapes & Beats;0.1;1-3;WEEK_END;-;google:"Just Shapes & Beats" game
+ENT;play-game;Hi-Fi Rush;0.1;1-3;WEEK_END;-;google:"Hi-Fi Rush" game
+ENT;play-game;Lair of the clockwork god;0.1;1-3;WEEK_END;-;google:"Lair of the clockwork god" game
+ENT;play-game;loop hero;0.1;1-3;WEEK_END;-;google:"loop hero" game
+ENT;play-game;mighty goose;0.1;1-3;WEEK_END;-;google:"mighty goose" game
+ENT;play-game;Olija;0.1;1-3;WEEK_END;-;google:"Olija" game
+ENT;play-game;Overlord 2;0.1;1-3;WEEK_END;-;google:"Overlord 2" game
+ENT;play-game;Pixel junk shooter;0.1;1-3;WEEK_END;-;google:"Pixel junk shooter" game
+ENT;play-game;Psychonauts 2;0.1;1-3;WEEK_END;-;google:"Psychonauts 2" game
+ENT;play-game;Rain World;0.1;1-3;WEEK_END;-;google:"Rain World" game
+ENT;play-game;risk of rain returns;0.1;1-3;WEEK_END;-;google:"risk of rain returns" game
+ENT;play-game;Risk of rain 2;0.1;1-3;WEEK_END;-;google:"Risk of rain 2" game
+ENT;play-game;Sackboy: A Big Adventure;0.1;1-3;WEEK_END;-;google:"Sackboy: A Big Adventure" game
+ENT;play-game;Sayonara Wild Hearts;0.1;1-3;WEEK_END;-;google:"Sayonara Wild Hearts" game
+ENT;play-game;Shovel Knight Dig;0.1;1-3;WEEK_END;-;google:"Shovel Knight Dig" game
+ENT;play-game;Skul: The Hero Slayer;0.1;1-3;WEEK_END;-;google:"Skul: The Hero Slayer" game
+ENT;play-game;solar ash;0.1;1-3;WEEK_END;-;google:"solar ash" game
+ENT;play-game;Spelunky 2;0.1;1-3;WEEK_END;-;google:"Spelunky 2" game
+ENT;play-game;steel assault;0.1;1-3;WEEK_END;-;google:"steel assault" game
+ENT;play-game;street of rage 4;0.1;1-3;WEEK_END;-;google:"street of rage 4" game
+ENT;play-game;Superflight;0.1;1-3;WEEK_END;-;google:"Superflight" game
+ENT;play-game;The Riftbreaker;0.1;1-3;WEEK_END;-;google:"The Riftbreaker" game
+ENT;play-game;Transistor;0.1;1-3;WEEK_END;-;google:"Transistor" game
+ENT;play-game;Umihara Kawase Shun;0.1;1-3;WEEK_END;-;google:"Umihara Kawase Shun" game
+ENT;play-game;Unsighted;0.1;1-3;WEEK_END;-;google:"Unsighted" game
+ENT;play-game;prototype 2;0.1;1-3;WEEK_END;-;google:"prototype 2" game
+ENT;play-game;disco elysium;0.1;1-3;WEEK_END;-;google:"disco elysium" game
+ENT;play-game;GATO ROBOTO;0.1;1-3;WEEK_END;-;google:"GATO ROBOTO" game
+ENT;play-game;COCOON;0.1;1-3;WEEK_END;-;google:"COCOON" game
+ENT;play-game;lovely planet;0.1;1-3;WEEK_END;-;google:"lovely planet" game
+ENT;play-game;lovely planet remix;0.1;1-3;WEEK_END;-;google:"lovely planet remix" game
+ENT;play-game;chuchu rocket;0.1;1-3;WEEK_END;-;google:"chuchu rocket" game
+ENT;play-game;Handsome Mr. Frog;0.1;1-3;WEEK_END;-;google:"Handsome Mr. Frog" game
+ENT;play-game;1001 spikes;0.1;1-3;WEEK_END;-;google:"1001 spikes" game
+ENT;play-game;Pepper Grinder;0.1;1-3;WEEK_END;-;google:"Pepper Grinder" game
+ENT;play-game;outlast 1/2;0.1;1-3;WEEK_END;-;google:"outlast 1/2" game
+ENT;play-game;pinkman;0.1;1-3;WEEK_END;-;google:"pinkman" game
+ENT;play-game;Catie in MeowmeowLand;0.1;1-3;WEEK_END;-;google:"Catie in MeowmeowLand" game
+ENT;play-game;OTXO;0.1;1-3;WEEK_END;-;google:"OTXO" game
+ENT;play-game;Disc Room;0.1;1-3;WEEK_END;-;google:"Disc Room" game
+ENT;play-game;Rifter;0.1;1-3;WEEK_END;-;google:"Rifter" game
+ENT;play-game;Spirits Abyss;0.1;1-3;WEEK_END;-;google:"Spirits Abyss" game
+ENT;play-game;Boneraiser Minions;0.1;1-3;WEEK_END;-;google:"Boneraiser Minions" game
+ENT;play-game;The Multi-Medium;0.1;1-3;WEEK_END;-;google:"The Multi-Medium" game
+ENT;play-game;Lowglow;0.1;1-3;WEEK_END;-;google:"Lowglow" game
+ENT;play-game;Hohokum;0.1;1-3;WEEK_END;-;google:"Hohokum" game
+ENT;play-game;Mosa Lina;0.1;1-3;WEEK_END;-;google:"Mosa Lina" game
+ENT;play-game;max payne 3;0.1;1-3;WEEK_END;-;google:"max payne 3" game
+ENT;play-game;Nine Sols;0.1;1-3;WEEK_END;-;google:"Nine Sols" game
+ENT;play-game;Super Fantasy Kingdom;0.1;1-3;WEEK_END;-;google:"Super Fantasy Kingdom" game

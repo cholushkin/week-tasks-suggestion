@@ -85,6 +85,7 @@ namespace WeekTasks
                 md.Write(suggestionAlgorithm.WeekDistribution);
             }
             
+            Console.WriteLine("Program completed.");
             return result;
         }
         
