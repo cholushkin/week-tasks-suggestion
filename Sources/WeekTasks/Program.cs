@@ -1,6 +1,5 @@
 ﻿using System.CommandLine;
 using System.Text.Json;
-using LocalAPIChat;
 using WeekTasks.Utils.Random;
 
 namespace WeekTasks
@@ -27,7 +26,7 @@ namespace WeekTasks
                 description:
                 $"Path to the task configuration JSON file. Defaults to '{DefaultSettingsPath}' if not specified.");
 
-            var seedOverride = new Option<int>(
+            var seedOverrideOption = new Option<int?>(
                 "--seed",
                 description: "Override seed to have same results"
             );
@@ -37,24 +36,24 @@ namespace WeekTasks
             {
                 startDateOption,
                 settingsOption,
-                seedOverride
+                seedOverrideOption
             };
 
-            // todo: set from args
-            //RandomHelper.Rnd.SetState(new LinearConRng.State(342094));
-            var seed = RandomHelper.Rnd.GetState().AsNumber();
-            
-            
-            rootCommand.SetHandler((string startDate, string settingsPath) =>
+            rootCommand.SetHandler((string startDate, string settingsPath, int? seed) =>
             {
                 settingsPath ??= DefaultSettingsPath;
                 startDate ??= GetNextMonday();
+                
+                if (seed.HasValue)
+                    RandomHelper.Rnd.SetState(new LinearConRng.State(seed.Value));
+                
                 LoadData(settingsPath, startDate);
                 
                 Settings["start-date"] = startDate;
                 Settings["output-file"] = $"{Settings["output-dir"]}/{startDate}.md";
-            }, startDateOption, settingsOption);
+            }, startDateOption, settingsOption, seedOverrideOption);
 
+            // Start execution point 
             var result = rootCommand.Invoke(args);
             
             // Display settings if verbose mode is enabled
@@ -79,7 +78,10 @@ namespace WeekTasks
             {
                 var motd = MessageOfTheDay.LoadFromTextFile(Settings["motd"]);
                 DateTime startDate = DateTime.Parse(Settings["start-date"]);
-                var md = new MarkdownFileWriter(startDate,seed.ToString(), Settings["obsidian-vault-dir"], motd);
+                var md = new MarkdownFileWriter(
+                    startDate,
+                    RandomHelper.Rnd.GetState().AsNumber().ToString(),
+                    Settings["obsidian-vault-dir"], motd);
                 md.Write(suggestionAlgorithm.WeekDistribution);
             }
             
