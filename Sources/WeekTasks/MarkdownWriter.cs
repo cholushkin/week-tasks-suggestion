@@ -96,6 +96,8 @@ namespace WeekTasks
             markdownBuilder.AppendLine("## Week review");
             markdownBuilder.AppendLine("- I followed my plan throughout the week");
             markdownBuilder.AppendLine("- AI summarize");
+            markdownBuilder.AppendLine();
+            markdownBuilder.AppendLine("#week-organizer #week-summary");
 
 
             // Write the Markdown content to the file

@@ -2,7 +2,7 @@ using System.Text.Json;
 
 namespace WeekTasks
 {
-    static class Settings
+    public static class Settings
     {
         public static Dictionary<string, string> LoadFromJson(string filePath)
         {

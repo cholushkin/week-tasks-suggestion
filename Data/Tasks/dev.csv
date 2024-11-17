@@ -14,7 +14,7 @@ DEV;c-sharp-pattern-matching;Example: if (items is { Count: > 0 });0.4;1-3;-;-;a
 DEV;cpp-classes-vs-structs;C++: classes vs structs details;0.3;1-2;-;-;ai:What are main differences between structs and classes in c++?
 DEV;shaders-in-general;Shader programming review;0.2;1-2;-;-;google:Shaders programming
 DEV;investigate-computational-shaders;Computational shaders programming in Unreal, Unity, C++;0.3;2-4;-;-;ai:What are computational shaders in general? What are them in Unity?
-DEV;c-shart-async;C#: Using async/await and asynchronous programming in general;0.4;3-5;-;-;google:async/await and asynchronous programming
+DEV;c-sharp-async;C#: Using async/await and asynchronous programming in general;0.4;3-5;-;-;google:async/await and asynchronous programming
 DEV;unity-addressables;Unity Addressables investiagtion;0.4;3-5;-;-;google:Adressables in Unity
 DEV;regexp-study;Regexp in general, is still actual, what are the alternatives;0.1;2-3;-;-;ai:Regexp in general, is still actual, what are the alternatives?
 DEV;xpath-study;xpath in general, is still actual, what are the alternatives;0.1;2-3;-;-;ai:xpath in general, is still actual, what are the alternatives?

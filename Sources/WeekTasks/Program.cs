@@ -8,7 +8,7 @@ namespace WeekTasks
     {
         private const string DefaultSettingsPath = "Data/Settings.json";
         
-        private static Dictionary<string, string> Settings;
+        public static Dictionary<string, string> Settings;
         private static Dictionary<string, TaskType> TaskTypes;
         private static List<Tasks.Task> TaskList { get; set; } = [];
         private static MessageOfTheDay MessageOfTheDay;

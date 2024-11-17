@@ -8,11 +8,9 @@ namespace WeekTasks
         Task<string> GetResponseFromAIAsync(string prompt);
     }
 
-
     public class LocalAI : IArtificialIntelligence
     {
         private readonly HttpClient _httpClient;
-        private static readonly string apiBaseUrl = "http://127.0.0.1:5000/v1/chat/completions";
         private bool _connectionProblem = false;
         private string _lastErrorMessage;
 
@@ -20,7 +18,7 @@ namespace WeekTasks
         {
             _httpClient = new HttpClient
             {
-                Timeout = TimeSpan.FromSeconds(3) // todo: pass from ctor
+                Timeout = TimeSpan.FromSeconds(3) // todo: consider passing timeout from constructor
             };
         }
 
@@ -30,52 +28,81 @@ namespace WeekTasks
 
             if (_connectionProblem)
             {
+                Console.WriteLine($"Connection problem detected. Last error: {_lastErrorMessage}");
                 return "[[howto-setup-ai]]";
             }
 
-            // Define the request body for the ChatCompletion API
+            // Prepare the request payload
             var request = new
             {
                 messages = new[]
                 {
                     new { role = "user", content = prompt }
                 },
-                max_tokens = 150 // Adjust as needed
+                max_tokens = 150
             };
-            
+
             try
             {
-                // Send the request
-                var response = await _httpClient.PostAsJsonAsync(apiBaseUrl, request);
-                if (response.IsSuccessStatusCode)
+                // Send the request to the local AI API
+                var response = await _httpClient.PostAsJsonAsync(WeekTasksProgram.Settings["ai-api-url"], request);
+
+                // Handle non-success HTTP status codes
+                if (!response.IsSuccessStatusCode)
                 {
-                    var jsonResponse = await response.Content.ReadFromJsonAsync<JsonElement>();
-                    return jsonResponse.GetProperty("choices")[0].GetProperty("message").GetProperty("content")
-                        .GetString();
+                    _connectionProblem = true;
+                    _lastErrorMessage = $"API Error: {response.StatusCode} - {response.ReasonPhrase}";
+                    Console.WriteLine(_lastErrorMessage);
+                    return "[[howto-setup-ai]]";
+                }
+
+                // Attempt to read and parse the response
+                var jsonResponse = await response.Content.ReadFromJsonAsync<JsonElement>();
+                if (jsonResponse.TryGetProperty("choices", out JsonElement choices) &&
+                    choices.GetArrayLength() > 0 &&
+                    choices[0].TryGetProperty("message", out JsonElement message) &&
+                    message.TryGetProperty("content", out JsonElement content))
+                {
+                    return content.GetString();
                 }
                 else
                 {
                     _connectionProblem = true;
-                    _lastErrorMessage = $"Error: {response.StatusCode} - {response.ReasonPhrase}"; 
+                    _lastErrorMessage = "Error: Unexpected response format received from the AI API.";
                     Console.WriteLine(_lastErrorMessage);
                     return "[[howto-setup-ai]]";
                 }
             }
+            catch (HttpRequestException ex)
+            {
+                _connectionProblem = true;
+                _lastErrorMessage = $"HTTP Error: {ex.Message}";
+                Console.WriteLine($"HTTP request failed: {ex.Message}");
+                return "[[howto-setup-ai]]";
+            }
             catch (TaskCanceledException ex) when (ex.InnerException is TimeoutException)
             {
                 _connectionProblem = true;
-                _lastErrorMessage = $"Error: {ex.ToString()}";
+                _lastErrorMessage = "Error: Request timed out.";
+                Console.WriteLine("Request timed out.");
+                return "[[howto-setup-ai]]";
+            }
+            catch (JsonException ex)
+            {
+                _connectionProblem = true;
+                _lastErrorMessage = $"Error: Failed to parse response JSON. {ex.Message}";
+                Console.WriteLine($"JSON parsing error: {ex.Message}");
                 return "[[howto-setup-ai]]";
             }
             catch (Exception ex)
             {
                 _connectionProblem = true;
-                _lastErrorMessage = $"Error: {ex.ToString()}";
+                _lastErrorMessage = $"Unexpected error: {ex.Message}";
+                Console.WriteLine($"Unexpected error: {ex}");
                 return "[[howto-setup-ai]]";
             }
         }
     }
-
 
     public class OpenAIHelper : IArtificialIntelligence
     {

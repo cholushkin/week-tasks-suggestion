@@ -2,8 +2,9 @@
     "tasks-dir": "Data/Tasks",    
     "motd": "Data/MessageOfTheDay.txt",
     "output-dir": "Output",
-    "~obsidian-vault-dir": "d:/obsidian/VAULT",
-    "obsidian-vault-dir": "",
+    "obsidian-vault-dir": "d:/obsidian/VAULT",
+    "~obsidian-vault-dir": "",
     "task-types": "Data/TaskTypes.json",
-    "log-level": "verbose"
+    "log-level": "verbose",
+    "ai-api-url": "http://127.0.0.1:5000/v1/chat/completions"
 }
